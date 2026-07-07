@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Guest Admin — Nisila & Yashmi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c9a96e;
+            --gold-dark: #b08968;
+            --ivory: #fffdf7;
+            --text: #4a3728;
+            --sage: #f0ece4;
+            --danger: #b5544a;
+            --success: #5c7a52;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--sage);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .admin-shell {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .admin-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .admin-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .admin-header p {
+            font-size: 0.9rem;
+            color: #8a7867;
+            letter-spacing: 0.5px;
+        }
+
+        .card {
+            background: var(--ivory);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(74, 55, 40, 0.08);
+            padding: 2rem;
+        }
+
+        /* ---------- Login ---------- */
+        #loginSection {
+            max-width: 400px;
+            margin: 3rem auto 0;
+        }
+
+        .field {
+            margin-bottom: 1.1rem;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8a7867;
+            margin-bottom: 0.4rem;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid #e4dccb;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            background: #fff;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .field input:focus {
+            border-color: var(--gold);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.75rem 1.6rem;
+            border: none;
+            border-radius: 50px;
+            background: var(--gold);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--gold);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: #fff;
+        }
+
+        .btn-sm {
+            padding: 0.45rem 0.9rem;
+            font-size: 0.75rem;
+        }
+
+        .btn-whatsapp {
+            background: #3fa24b;
+        }
+
+        .btn-whatsapp:hover {
+            background: #338a3d;
+        }
+
+        .btn-danger {
+            background: transparent;
+            color: var(--danger);
+            border: 1.5px solid var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        #loginError {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+            text-align: center;
+            min-height: 1.2em;
+        }
+
+        /* ---------- Dashboard ---------- */
+        #dashboardSection[hidden],
+        #loginSection[hidden] {
+            display: none;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .topbar h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+        }
+
+        .add-guest-form {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .add-guest-form .field {
+            flex: 1 1 200px;
+            margin-bottom: 0;
+        }
+
+        .add-guest-form .btn {
+            align-self: flex-end;
+            height: 46px;
+        }
+
+        .guest-count {
+            font-size: 0.8rem;
+            color: #8a7867;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            text-align: left;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8a7867;
+            padding: 0.6rem 0.8rem;
+            border-bottom: 2px solid #eee2cd;
+        }
+
+        tbody td {
+            padding: 0.9rem 0.8rem;
+            border-bottom: 1px solid #f1ece0;
+            font-size: 0.92rem;
+            vertical-align: middle;
+        }
+
+        tbody tr:hover {
+            background: #fbf8f0;
+        }
+
+        .guest-name-cell {
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-sent {
+            background: #e7f0e3;
+            color: var(--success);
+        }
+
+        .badge-pending {
+            background: #f3ede0;
+            color: #a4854f;
+        }
+
+        .row-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: #a4907a;
+            font-size: 0.95rem;
+        }
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 2rem;
+            transform: translateX(-50%) translateY(120%);
+            background: var(--text);
+            color: #fff;
+            padding: 0.9rem 1.6rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            transition: transform 0.35s ease;
+            z-index: 50;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (max-width: 640px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody tr {
+                margin-bottom: 1rem;
+                border: 1px solid #f1ece0;
+                border-radius: 10px;
+                padding: 0.5rem;
+            }
+
+            tbody td {
+                border-bottom: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            tbody td::before {
+                content: attr(data-label);
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #a4907a;
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-shell">
+        <div class="admin-header">
+            <h1>Guest Admin</h1>
+            <p>Nisila & Yashmi — Private Guest List</p>
+        </div>
+
+        <section id="loginSection" class="card">
+            <form id="loginForm">
+                <div class="field">
+                    <label for="adminEmail">Email</label>
+                    <input type="email" id="adminEmail" autocomplete="username" required>
+                </div>
+                <div class="field">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" autocomplete="current-password" required>
+                </div>
+                <button type="submit" class="btn btn-block" id="loginBtn">Sign In</button>
+                <p id="loginError"></p>
+            </form>
+        </section>
+
+        <section id="dashboardSection" class="card" hidden>
+            <div class="topbar">
+                <h2>Guest List</h2>
+                <button type="button" class="btn btn-outline btn-sm" id="signOutBtn">Sign Out</button>
+            </div>
+
+            <form class="add-guest-form" id="addGuestForm">
+                <div class="field">
+                    <label for="guestNameInput">Guest Name</label>
+                    <input type="text" id="guestNameInput" placeholder="e.g. Kamal Perera" required>
+                </div>
+                <div class="field">
+                    <label for="guestPhoneInput">Phone Number</label>
+                    <input type="tel" id="guestPhoneInput" placeholder="e.g. 0771234567" required>
+                </div>
+                <button type="submit" class="btn" id="addGuestBtn">+ Add Guest</button>
+            </form>
+
+            <p class="guest-count" id="guestCount"></p>
+
+            <table id="guestsTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="guestsBody"></tbody>
+            </table>
+
+            <p class="empty-state" id="emptyState" hidden>No guests yet — add your first guest above 💌</p>
+        </section>
+    </div>
+
+    <div class="toast" id="toast"><span id="toastMessage"></span></div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>

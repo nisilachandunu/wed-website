@@ -5,6 +5,88 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ============================================
+    // INTRO PRELOADER + HERO NAME LETTER REVEAL
+    // ============================================
+    const preloader = document.getElementById('preloader');
+    const nameSpans = document.querySelectorAll('.hero-names .groom-name, .hero-names .bride-name');
+
+    // Split names into individually animated letters
+    let letterDelay = 0.15;
+    nameSpans.forEach(span => {
+        const text = span.textContent;
+        span.textContent = '';
+        [...text].forEach(char => {
+            const letter = document.createElement('span');
+            letter.className = 'letter';
+            letter.textContent = char;
+            letter.style.setProperty('--ld', `${letterDelay}s`);
+            letterDelay += 0.09;
+            span.appendChild(letter);
+        });
+        letterDelay += 0.25;
+    });
+
+    function finishIntro() {
+        if (preloader) preloader.classList.add('hidden');
+        document.body.classList.add('intro-done');
+
+        // Once letters have landed, restore plain text so the
+        // golden shimmer gradient clips cleanly across each name
+        setTimeout(() => {
+            nameSpans.forEach(span => {
+                span.textContent = span.textContent;
+            });
+            document.body.classList.add('names-settled');
+        }, (letterDelay + 1.2) * 1000);
+    }
+
+    if (reducedMotion) {
+        if (preloader) preloader.remove();
+        document.body.classList.add('intro-done');
+    } else {
+        // Let the rings draw and the monogram breathe before revealing
+        setTimeout(finishIntro, 2400);
+    }
+
+    // ============================================
+    // SCROLL PROGRESS BAR
+    // ============================================
+    const scrollProgress = document.getElementById('scrollProgress');
+
+    function updateScrollProgress() {
+        if (!scrollProgress) return;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+        scrollProgress.style.width = `${progress}%`;
+    }
+
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
+
+    // ============================================
+    // HERO SPARKLES
+    // ============================================
+    const sparklesContainer = document.getElementById('heroSparkles');
+    if (sparklesContainer && !reducedMotion) {
+        const sparkleCount = window.innerWidth <= 768 ? 14 : 26;
+        for (let i = 0; i < sparkleCount; i++) {
+            const s = document.createElement('div');
+            s.className = 'sparkle';
+            s.style.left = `${Math.random() * 100}%`;
+            s.style.top = `${Math.random() * 100}%`;
+            s.style.setProperty('--sd', `${3 + Math.random() * 4}s`);
+            s.style.setProperty('--sdel', `${Math.random() * 5}s`);
+            s.style.setProperty('--so', `${0.4 + Math.random() * 0.5}`);
+            const size = 2 + Math.random() * 3;
+            s.style.width = `${size}px`;
+            s.style.height = `${size}px`;
+            sparklesContainer.appendChild(s);
+        }
+    }
+
     // ============================================
     // COUNTDOWN TIMER
     // ============================================
@@ -28,10 +110,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById('days').textContent = String(days).padStart(3, '0');
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        setCountdownValue('days', String(days).padStart(3, '0'));
+        setCountdownValue('hours', String(hours).padStart(2, '0'));
+        setCountdownValue('minutes', String(minutes).padStart(2, '0'));
+        setCountdownValue('seconds', String(seconds).padStart(2, '0'));
+    }
+
+    function setCountdownValue(id, value) {
+        const el = document.getElementById(id);
+        if (el.textContent !== value) {
+            el.textContent = value;
+            if (!reducedMotion) {
+                el.classList.remove('tick');
+                void el.offsetWidth; // restart the tick animation
+                el.classList.add('tick');
+            }
+        }
     }
 
     updateCountdown();
@@ -261,21 +355,74 @@ document.addEventListener('DOMContentLoaded', () => {
     // TYPING EFFECT FOR HERO (Subtle)
     // ============================================
     const heroSubtitle = document.querySelector('.hero-subtitle');
-    if (heroSubtitle) {
+    if (heroSubtitle && !reducedMotion) {
         const originalText = heroSubtitle.textContent;
-        heroSubtitle.textContent = '';
-        heroSubtitle.style.visibility = 'visible';
-        
+        heroSubtitle.textContent = '\u00A0'; // keep height while empty
+
         let i = 0;
         function typeWriter() {
             if (i < originalText.length) {
-                heroSubtitle.textContent += originalText.charAt(i);
+                heroSubtitle.textContent = originalText.slice(0, i + 1);
                 i++;
                 setTimeout(typeWriter, 80);
             }
         }
-        
-        setTimeout(typeWriter, 1000);
+
+        // Start once the preloader has lifted and the subtitle is fading in
+        setTimeout(typeWriter, 2900);
+    }
+
+    // ============================================
+    // BACK TO TOP
+    // ============================================
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 600);
+        }, { passive: true });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ============================================
+    // FOOTER — floating hearts
+    // ============================================
+    const footerHearts = document.getElementById('footerHearts');
+    if (footerHearts && !reducedMotion) {
+        const heartChars = ['❤', '♥', '❥'];
+        const heartCount = window.innerWidth <= 768 ? 6 : 10;
+        for (let i = 0; i < heartCount; i++) {
+            const h = document.createElement('span');
+            h.className = 'floating-heart';
+            h.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+            h.style.left = `${5 + Math.random() * 90}%`;
+            h.style.fontSize = `${0.6 + Math.random() * 0.9}rem`;
+            h.style.setProperty('--hfd', `${7 + Math.random() * 6}s`);
+            h.style.setProperty('--hfdel', `${Math.random() * 8}s`);
+            footerHearts.appendChild(h);
+        }
+    }
+
+    // ============================================
+    // TIMELINE — golden line draws as you scroll
+    // ============================================
+    const timeline = document.querySelector('.timeline');
+    if (timeline) {
+        const progressLine = document.createElement('div');
+        progressLine.className = 'timeline-progress';
+        timeline.appendChild(progressLine);
+
+        function updateTimelineProgress() {
+            const rect = timeline.getBoundingClientRect();
+            const viewportMid = window.innerHeight * 0.65;
+            const progress = Math.min(Math.max(viewportMid - rect.top, 0), rect.height);
+            progressLine.style.height = `${progress}px`;
+        }
+
+        window.addEventListener('scroll', updateTimelineProgress, { passive: true });
+        updateTimelineProgress();
     }
 
 });
