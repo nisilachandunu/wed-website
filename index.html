@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Nisila & Yashmi | Wedding - August 20, 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Petals -->
+    <div class="petals-container" id="petals"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">N & Y</div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#couple">Our Story</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+            <li><a href="invitation.html" class="nav-invitation-btn">Invitation</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-ornament top">✦</div>
+            <p class="hero-subtitle">We're Getting Married</p>
+            <h1 class="hero-names">
+                <span class="groom-name">Nisila</span>
+                <span class="ampersand">&</span>
+                <span class="bride-name">Yashmi</span>
+            </h1>
+            <div class="hero-date-line">
+                <span class="line"></span>
+                <span class="date-text">August 20, 2026</span>
+                <span class="line"></span>
+            </div>
+            <p class="hero-venue">Sawingir Hills, Gonapala</p>
+
+            <!-- Countdown Timer -->
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">000</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+
+            <a href="#couple" class="scroll-down">
+                <span>Scroll Down</span>
+                <div class="scroll-arrow">↓</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Couple Section -->
+    <section class="section couple-section" id="couple">
+        <div class="section-header">
+            <span class="section-ornament">❧</span>
+            <h2 class="section-title">The Happy Couple</h2>
+            <p class="section-subtitle">Two hearts, one beautiful journey</p>
+        </div>
+
+        <div class="couple-container">
+            <div class="couple-card groom-card" data-animate>
+                <div class="couple-image-wrapper">
+                    <div class="couple-image-placeholder groom-placeholder">
+                        <span class="placeholder-icon">🤵</span>
+                        <span class="placeholder-text">Groom</span>
+                    </div>
+                </div>
+                <h3 class="couple-name">Nisila Chandunu Bambarenda</h3>
+                <p class="couple-parents">
+                    Son of<br>
+                    <strong>Mr. Susil Bambarenda</strong><br>
+                    &<br>
+                    <strong>Mrs. Champika Shirani Edirisinghe</strong>
+                </p>
+            </div>
+
+            <div class="couple-heart" data-animate>
+                <div class="heart-icon">
+                    <svg viewBox="0 0 100 100" class="heart-svg">
+                        <path d="M50,88 C25,65 5,50 5,30 C5,15 15,5 30,5 C40,5 48,12 50,20 C52,12 60,5 70,5 C85,5 95,15 95,30 C95,50 75,65 50,88Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <p class="couple-date">20 . 08 . 2026</p>
+            </div>
+
+            <div class="couple-card bride-card" data-animate>
+                <div class="couple-image-wrapper">
+                    <div class="couple-image-placeholder bride-placeholder">
+                        <span class="placeholder-icon">👰</span>
+                        <span class="placeholder-text">Bride</span>
+                    </div>
+                </div>
+                <h3 class="couple-name">Yashmi Bihara Amarakoon</h3>
+                <p class="couple-parents">
+                    Daughter of<br>
+                    <strong>Mr. Ajith Lal Amarakoon</strong><br>
+                    &<br>
+                    <strong>Mrs. Lakshmi Kumari Hemachandra</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Story Timeline -->
+    <section class="section story-section" id="details">
+        <div class="section-header">
+            <span class="section-ornament">❧</span>
+            <h2 class="section-title">Wedding Details</h2>
+            <p class="section-subtitle">Everything you need to know</p>
+        </div>
+
+        <div class="details-container">
+            <!-- <div class="detail-card" data-animate>
+                <div class="detail-icon">📅</div>
+                <h3>Date</h3>
+                <p class="detail-main">August 20, 2026</p>
+                <p class="detail-sub">Thursday</p>
+                <p class="detail-sub">10.00 AM to 04.00 PM</p>
+            </div> -->
+
+            <!-- <div class="detail-card" data-animate>
+                <div class="detail-icon">📍</div>
+                <h3>Venue</h3>
+                <p class="detail-main">Sawingir Hills</p>
+                <p class="detail-sub">Gonapala, Sri Lanka</p>
+            </div> -->
+            <div class="detail-card" data-animate>
+                <div class="detail-icon">📅</div>
+                <h3>Date</h3>
+                <p class="detail-main">August 20, 2026</p>
+                <!-- <p class="detail-sub">Thursday</p> -->
+            
+                <a href="wedding.ics" class="calendar-btn" download>
+                    📥 Add to My Calendar
+                </a>
+            </div>
+
+            <!-- Venue -->
+            <div class="detail-card" data-animate>
+                <div class="detail-icon">📍</div>
+                <h3>Venue</h3>
+            
+                <a 
+                    class="venue-link"
+                    href="https://www.google.com/maps/place/Sawingir+Hills/data=!4m2!3m1!1s0x0:0x8412a55befcddfe5?sa=X&ved=1t:2428&ictx=111"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Sawingir Hills location in Google Maps"
+                >
+                    <p class="detail-main">Sawingir Hills</p>
+                    <p class="detail-sub">Gonapala, Sri Lanka</p>
+                </a>
+            
+            </div>
+
+            <div class="detail-card" data-animate>
+                <div class="detail-icon">🪷</div>
+                <h3>Ceremony</h3>
+                <p class="detail-main">Poruwa Ceremony</p>
+                <p class="detail-sub">Traditional Buddhist wedding</p>
+            </div>
+
+            <div class="detail-card" data-animate>
+                <div class="detail-icon">🎉</div>
+                <h3>Reception</h3>
+                <p class="detail-main">Celebration</p>
+                <p class="detail-sub">Lunch, dancing & joy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section timeline-section" id="timeline">
+        <div class="section-header">
+            <span class="section-ornament">❧</span>
+            <h2 class="section-title">Wedding Day Timeline</h2>
+            <p class="section-subtitle">A day to remember forever</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item" data-animate>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-time">Morning</span>
+                    <h3>Getting Ready</h3>
+                    <p>The bride and groom prepare for the most beautiful day of their lives.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-animate>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-time">Ceremony</span>
+                    <h3>Poruwa Ceremony</h3>
+                    <p>The traditional Sri Lankan wedding ceremony at the beautifully decorated Poruwa.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-animate>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-time">Afternoon</span>
+                    <h3>Photo Session</h3>
+                    <p>Capturing memories in the stunning landscapes of Sawingir Hills.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-animate>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-time">Evening</span>
+                    <h3>Reception & Lunch</h3>
+                    <p>An enchanting evening of celebration with family and friends.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-animate>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-time">Night</span>
+                    <h3>Dance & Celebration</h3>
+                    <p>Dance the night away under the stars at Sawingir Hills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Placeholder Section -->
+    <section class="section gallery-section" id="gallery">
+        <div class="section-header">
+            <span class="section-ornament">❧</span>
+            <h2 class="section-title">Our Gallery</h2>
+            <p class="section-subtitle">Moments captured in time</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item gi-1" data-animate>
+                <div class="gallery-placeholder">
+                    <span>💑</span>
+                    <p>Photo 1</p>
+                </div>
+            </div>
+            <div class="gallery-item gi-2" data-animate>
+                <div class="gallery-placeholder">
+                    <span>💐</span>
+                    <p>Photo 2</p>
+                </div>
+            </div>
+            <div class="gallery-item gi-3" data-animate>
+                <div class="gallery-placeholder">
+                    <span>💍</span>
+                    <p>Photo 3</p>
+                </div>
+            </div>
+            <div class="gallery-item gi-4" data-animate>
+                <div class="gallery-placeholder">
+                    <span>🌸</span>
+                    <p>Photo 4</p>
+                </div>
+            </div>
+            <div class="gallery-item gi-5" data-animate>
+                <div class="gallery-placeholder">
+                    <span>🥂</span>
+                    <p>Photo 5</p>
+                </div>
+            </div>
+            <div class="gallery-item gi-6" data-animate>
+                <div class="gallery-placeholder">
+                    <span>✨</span>
+                    <p>Photo 6</p>
+                </div>
+            </div>
+        </div>
+        <p class="gallery-note">✨ Photos will be updated as the big day approaches ✨</p>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="section rsvp-section" id="rsvp">
+        <div class="rsvp-bg-pattern"></div>
+        <div class="section-header">
+            <span class="section-ornament light">❧</span>
+            <h2 class="section-title light">RSVP</h2>
+            <p class="section-subtitle light">We would be honored by your presence</p>
+        </div>
+
+        <div class="rsvp-container">
+            <div class="rsvp-card" data-animate>
+                <p class="rsvp-message">
+                    Please let us know if you'll be joining us on our special day. 
+                    Your presence would mean the world to us!
+                </p>
+
+                <form class="rsvp-form" id="rsvpForm">
+                    <div class="form-group">
+                        <input type="text" id="guestName" placeholder="Your Full Name" required>
+                        <label for="guestName">Your Full Name</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="tel" id="guestPhone" placeholder="Your Phone Number" required>
+                        <label for="guestPhone">Your Phone Number</label>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="attending" required>
+                            <option value="" disabled selected>Will you attend?</option>
+                            <option value="yes">Joyfully Accept ✨</option>
+                            <option value="no">Regretfully Decline 😢</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="guests">
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5+ Guests</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Leave us a message (optional)" rows="3"></textarea>
+                        <label for="message">Message</label>
+                    </div>
+
+                    <button type="submit" class="rsvp-submit">
+                        <span>Send RSVP</span>
+                        <span class="btn-sparkle">✨</span>
+                    </button>
+                </form>
+
+                <div class="rsvp-contact">
+                    <p>Or reach us directly:</p>
+                    <div class="contact-numbers">
+                        <a href="tel:+94701990692" class="contact-link">
+                            <span class="contact-icon">📱</span>
+                            <span>+94 70 199 0692</span>
+                        </a>
+                        <a href="tel:+94701941261" class="contact-link">
+                            <span class="contact-icon">📱</span>
+                            <span>+94 70 194 1261</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-ornament">❦</div>
+            <h2 class="footer-names">Nisila & Yashmi</h2>
+            <p class="footer-date">August 20, 2026 — Sawingir Hills, Gonapala</p>
+            <p class="footer-message">"Two souls with a single thought, two hearts that beat as one."</p>
+            <div class="footer-ornament">❦</div>
+            <p class="footer-copyright">Made with ❤️ for our special day</p>
+        </div>
+    </footer>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">💌</span>
+        <span class="toast-message">Thank you! Your RSVP has been received.</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

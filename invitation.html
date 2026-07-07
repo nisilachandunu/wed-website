@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Wedding Invitation — Nisila & Yashmi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c9a96e;
+            --ivory: #fffdf7;
+            --text: #4a3728;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: #f0ece4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1.5rem;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            background: var(--ivory);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.3);
+        }
+
+        .invitation-viewer {
+            width: 100%;
+            max-width: 560px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 12px 40px rgba(61, 44, 44, 0.15);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .invitation-viewer iframe,
+        .invitation-viewer embed,
+        .invitation-viewer object {
+            display: block;
+            width: 100%;
+            height: min(85vh, 792px);
+            border: none;
+        }
+
+        .invitation-fallback {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text);
+        }
+
+        .invitation-fallback p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .action-bar {
+                display: none;
+            }
+
+            .invitation-viewer {
+                max-width: none;
+                box-shadow: none;
+            }
+
+            .invitation-viewer iframe,
+            .invitation-viewer embed,
+            .invitation-viewer object {
+                height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="action-bar">
+        <a href="index.html" class="action-btn">← Back to Website</a>
+        <a href="invitation.pdf" download class="action-btn">⬇️ Download</a>
+        <button class="action-btn" onclick="window.print()">🖨️ Print</button>
+    </div>
+
+    <div class="invitation-viewer">
+        <iframe
+            src="invitation.pdf"
+            title="Wedding Invitation — Nisila & Yashmi"
+        ></iframe>
+        <noscript>
+            <div class="invitation-fallback">
+                <p>Your browser needs JavaScript enabled to view the invitation inline.</p>
+                <a href="invitation.pdf" class="action-btn" download>Download Invitation</a>
+            </div>
+        </noscript>
+    </div>
+</body>
+</html>
