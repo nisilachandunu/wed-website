@@ -122,37 +122,58 @@ document.addEventListener('DOMContentLoaded', () => {
     animateElements.forEach(el => observer.observe(el));
 
     // ============================================
-    // FLOATING PETALS
+    // FLOATING PETALS — subtle, mobile-friendly
     // ============================================
     const petalsContainer = document.getElementById('petals');
-    const petalEmojis = ['🌸', '🌺', '💮', '🏵️', '✿', '❀', '🌷'];
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function createPetal() {
-        const petal = document.createElement('div');
-        petal.classList.add('petal');
-        petal.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
-        
-        const startX = Math.random() * window.innerWidth;
-        const duration = 8 + Math.random() * 8;
-        const size = 0.6 + Math.random() * 1;
-        
-        petal.style.left = `${startX}px`;
-        petal.style.animationDuration = `${duration}s`;
-        petal.style.fontSize = `${size}rem`;
-        petal.style.animationDelay = `${Math.random() * 2}s`;
-        
-        petalsContainer.appendChild(petal);
-        
-        setTimeout(() => {
-            petal.remove();
-        }, (duration + 2) * 1000);
-    }
+    if (petalsContainer && !prefersReducedMotion) {
+        const petalEmojis = ['🌸', '✿', '❀'];
+        let activePetals = 0;
 
-    // Create petals periodically
-    setInterval(createPetal, 2000);
-    // Initial burst
-    for (let i = 0; i < 5; i++) {
-        setTimeout(createPetal, i * 400);
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+
+        function createPetal() {
+            const mobile = isMobile();
+            const maxPetals = mobile ? 6 : 12;
+            if (activePetals >= maxPetals) return;
+
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            if (mobile) petal.classList.add('petal--mobile');
+            petal.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+
+            const startX = Math.random() * window.innerWidth;
+            const duration = mobile ? 12 + Math.random() * 8 : 10 + Math.random() * 8;
+            const size = mobile
+                ? 0.28 + Math.random() * 0.22
+                : 0.45 + Math.random() * 0.35;
+            const drift = mobile ? 30 + Math.random() * 40 : 50 + Math.random() * 60;
+
+            petal.style.left = `${startX}px`;
+            petal.style.animationDuration = `${duration}s`;
+            petal.style.fontSize = `${size}rem`;
+            petal.style.animationDelay = `${Math.random() * 3}s`;
+            petal.style.setProperty('--drift', `${drift}px`);
+
+            petalsContainer.appendChild(petal);
+            activePetals++;
+
+            setTimeout(() => {
+                petal.remove();
+                activePetals--;
+            }, (duration + 2) * 1000);
+        }
+
+        const interval = isMobile() ? 5000 : 3000;
+        setInterval(createPetal, interval);
+
+        const initialCount = isMobile() ? 2 : 4;
+        for (let i = 0; i < initialCount; i++) {
+            setTimeout(createPetal, i * 600);
+        }
     }
 
     // ============================================
