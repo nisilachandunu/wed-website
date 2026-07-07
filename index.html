@@ -6,12 +6,28 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Nisila & Yashmi | Wedding - August 20, 2026</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,88 C25,65 5,50 5,30 C5,15 15,5 30,5 C40,5 48,12 50,20 C52,12 60,5 70,5 C85,5 95,15 95,30 C95,50 75,65 50,88Z' fill='%23c9a96e'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Intro Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <svg class="preloader-rings" viewBox="0 0 130 78" fill="none" aria-hidden="true">
+                <circle class="ring ring-1" cx="48" cy="39" r="27"/>
+                <circle class="ring ring-2" cx="82" cy="39" r="27"/>
+            </svg>
+            <p class="preloader-names">Nisila &amp; Yashmi</p>
+            <p class="preloader-date">20 . 08 . 2026</p>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- Floating Petals -->
     <div class="petals-container" id="petals"></div>
 
@@ -34,6 +50,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-aurora" aria-hidden="true">
+            <span class="aurora-blob aurora-1"></span>
+            <span class="aurora-blob aurora-2"></span>
+            <span class="aurora-blob aurora-3"></span>
+        </div>
+        <div class="hero-sparkles" id="heroSparkles"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-ornament top">✦</div>
@@ -75,14 +97,14 @@
 
             <a href="#couple" class="scroll-down">
                 <span>Scroll Down</span>
-                <div class="scroll-arrow">↓</div>
+                <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
             </a>
         </div>
     </section>
 
     <!-- Couple Section -->
     <section class="section couple-section" id="couple">
-        <div class="section-header">
+        <div class="section-header" data-animate>
             <span class="section-ornament">❧</span>
             <h2 class="section-title">The Happy Couple</h2>
             <p class="section-subtitle">Two hearts, one beautiful journey</p>
@@ -134,7 +156,7 @@
 
     <!-- Love Story Timeline -->
     <section class="section story-section" id="details">
-        <div class="section-header">
+        <div class="section-header" data-animate>
             <span class="section-ornament">❧</span>
             <h2 class="section-title">Wedding Details</h2>
             <p class="section-subtitle">Everything you need to know</p>
@@ -202,7 +224,7 @@
 
     <!-- Timeline Section -->
     <section class="section timeline-section" id="timeline">
-        <div class="section-header">
+        <div class="section-header" data-animate>
             <span class="section-ornament">❧</span>
             <h2 class="section-title">Wedding Day Timeline</h2>
             <p class="section-subtitle">A day to remember forever</p>
@@ -254,7 +276,7 @@
 
     <!-- Gallery Placeholder Section -->
     <section class="section gallery-section" id="gallery">
-        <div class="section-header">
+        <div class="section-header" data-animate>
             <span class="section-ornament">❧</span>
             <h2 class="section-title">Our Gallery</h2>
             <p class="section-subtitle">Moments captured in time</p>
@@ -304,7 +326,7 @@
     <!-- RSVP Section -->
     <section class="section rsvp-section" id="rsvp">
         <div class="rsvp-bg-pattern"></div>
-        <div class="section-header">
+        <div class="section-header" data-animate>
             <span class="section-ornament light">❧</span>
             <h2 class="section-title light">RSVP</h2>
             <p class="section-subtitle light">We would be honored by your presence</p>
@@ -376,7 +398,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
+        <div class="footer-hearts" id="footerHearts" aria-hidden="true"></div>
+        <div class="footer-content" data-animate>
             <div class="footer-ornament">❦</div>
             <h2 class="footer-names">Nisila & Yashmi</h2>
             <p class="footer-date">August 20, 2026 — Sawingir Hills, Gonapala</p>
@@ -385,6 +408,11 @@
             <p class="footer-copyright">Made with ❤️ for our special day</p>
         </div>
     </footer>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <span class="btt-arrow">↑</span>
+    </button>
 
     <!-- Toast notification -->
     <div class="toast" id="toast">
