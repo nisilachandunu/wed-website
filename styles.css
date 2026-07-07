@@ -1752,6 +1752,945 @@ body {
     }
 }
 
+/* ============================================
+   POLISH LAYER — Preloader, sparkles, reveals
+   ============================================ */
+
+/* --- Intro Preloader --- */
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(ellipse at 50% 40%, rgba(201, 169, 110, 0.12) 0%, transparent 60%),
+        var(--color-ivory);
+    transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-inner {
+    text-align: center;
+}
+
+.preloader-rings {
+    width: 130px;
+    height: 78px;
+    margin-bottom: 1rem;
+}
+
+.preloader-rings .ring {
+    fill: none;
+    stroke: var(--color-gold);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 170;
+    stroke-dashoffset: 170;
+    animation: drawRing 1.6s ease forwards;
+    filter: drop-shadow(0 0 6px rgba(201, 169, 110, 0.5));
+}
+
+.preloader-rings .ring-2 {
+    stroke: var(--color-primary-light);
+    animation-delay: 0.35s;
+}
+
+@keyframes drawRing {
+    to { stroke-dashoffset: 0; }
+}
+
+.preloader-names {
+    font-family: var(--font-script);
+    font-size: 2.4rem;
+    color: var(--color-primary-dark);
+    opacity: 0;
+    animation: preloaderFadeUp 1s ease 0.9s forwards;
+}
+
+.preloader-date {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    letter-spacing: 5px;
+    color: var(--color-gold);
+    margin-top: 0.4rem;
+    opacity: 0;
+    animation: preloaderFadeUp 1s ease 1.25s forwards;
+}
+
+@keyframes preloaderFadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Scroll Progress Bar --- */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--color-gold), var(--color-primary-light), var(--color-gold));
+    z-index: 1500;
+    box-shadow: 0 0 10px rgba(201, 169, 110, 0.6);
+    transition: width 0.1s linear;
+}
+
+/* --- Hero: gate content until preloader is done --- */
+.hero-content {
+    opacity: 0;
+}
+
+body.intro-done .hero-content {
+    opacity: 1;
+}
+
+/* --- Hero name letter reveal --- */
+.hero-names .letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.5em) rotate(6deg) scale(0.8);
+    filter: blur(6px);
+    animation: letterIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--ld, 0s);
+    animation-play-state: paused;
+}
+
+body.intro-done .hero-names .letter {
+    animation-play-state: running;
+}
+
+@keyframes letterIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Golden shimmer sweeping across the names (applied after letters settle) */
+body.names-settled .groom-name,
+body.names-settled .bride-name {
+    background: linear-gradient(
+        110deg,
+        #ffffff 0%,
+        #ffffff 40%,
+        var(--color-gold-light) 50%,
+        #ffffff 60%,
+        #ffffff 100%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShimmer 6s ease-in-out 0.5s infinite;
+}
+
+@keyframes goldShimmer {
+    0% { background-position: 120% 0; }
+    35% { background-position: -60% 0; }
+    100% { background-position: -60% 0; }
+}
+
+/* Staged entrance for the rest of the hero */
+.hero-ornament.top,
+.hero-subtitle,
+.hero-date-line,
+.hero-venue,
+.countdown,
+.scroll-down {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+body.intro-done .hero-ornament.top { opacity: 1; transform: none; transition-delay: 0.2s; }
+body.intro-done .hero-subtitle { opacity: 1; transform: none; transition-delay: 0.4s; }
+body.intro-done .hero-date-line { opacity: 1; transform: none; transition-delay: 1.6s; }
+body.intro-done .hero-venue { opacity: 1; transform: none; transition-delay: 1.9s; }
+body.intro-done .countdown { opacity: 1; transform: none; transition-delay: 2.2s; }
+body.intro-done .scroll-down { opacity: 1; transform: none; transition-delay: 2.6s; }
+
+/* Date line grows outward */
+.hero-date-line .line {
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 2s;
+}
+
+body.intro-done .hero-date-line .line {
+    width: 80px;
+}
+
+/* --- Hero sparkles --- */
+.hero-sparkles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-gold-light);
+    box-shadow: 0 0 6px 2px rgba(232, 213, 176, 0.6);
+    opacity: 0;
+    animation: sparkleTwinkle var(--sd, 4s) ease-in-out var(--sdel, 0s) infinite;
+}
+
+@keyframes sparkleTwinkle {
+    0%, 100% { opacity: 0; transform: scale(0.4) translateY(0); }
+    50% { opacity: var(--so, 0.8); transform: scale(1) translateY(-14px); }
+}
+
+/* --- Countdown tick + glow --- */
+.countdown-item {
+    transition: var(--transition-smooth);
+}
+
+.countdown-item:hover {
+    border-color: rgba(232, 213, 176, 0.6);
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-4px);
+}
+
+.countdown-number {
+    display: inline-block;
+}
+
+.countdown-number.tick {
+    animation: numberTick 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes numberTick {
+    0% { transform: translateY(-0.6em); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Section headers: staged flourish --- */
+.section-header[data-animate] .section-ornament {
+    display: inline-block;
+    opacity: 0;
+    transform: rotate(-120deg) scale(0.4);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.section-header[data-animate].animate-in .section-ornament {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+.section-header[data-animate] .section-title {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease 0.15s, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.section-header[data-animate].animate-in .section-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-header[data-animate] .section-subtitle {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.9s ease 0.35s, transform 0.9s ease 0.35s;
+}
+
+.section-header[data-animate].animate-in .section-subtitle {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Gold divider line that draws itself under each title */
+.section-header::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    margin: 1.2rem auto 0;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+}
+
+.section-header.animate-in::after {
+    width: 180px;
+}
+
+/* --- Couple cards: slide in from the sides --- */
+.groom-card {
+    transform: translateX(-60px) translateY(0);
+}
+
+.bride-card {
+    transform: translateX(60px) translateY(0);
+}
+
+.groom-card.animate-in,
+.bride-card.animate-in {
+    transform: translateX(0) translateY(0);
+}
+
+.couple-image-wrapper {
+    transition: var(--transition-smooth);
+}
+
+.couple-image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 169, 110, 0.5);
+    animation: haloPulse 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes haloPulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.06); opacity: 0.2; }
+}
+
+.couple-card:hover .couple-image-wrapper {
+    transform: scale(1.04) rotate(1.5deg);
+    box-shadow: 0 12px 50px rgba(176, 137, 104, 0.35);
+}
+
+/* --- Detail cards: icon float + gold sheen on hover --- */
+.detail-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+
+.detail-card:hover::before {
+    transform: scaleX(1);
+}
+
+.detail-icon {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.detail-card:hover .detail-icon {
+    transform: translateY(-6px) scale(1.15);
+}
+
+/* --- Timeline: line draws with scroll, dots pop --- */
+.timeline::before {
+    background: rgba(201, 169, 110, 0.2);
+}
+
+.timeline .timeline-progress {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to bottom, var(--color-gold-light), var(--color-gold), var(--color-primary));
+    box-shadow: 0 0 8px rgba(201, 169, 110, 0.5);
+    transition: height 0.25s ease-out;
+}
+
+.timeline-item .timeline-dot {
+    transform: scale(0);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+}
+
+.timeline-item.animate-in .timeline-dot {
+    transform: scale(1);
+}
+
+.timeline-item:nth-child(even) {
+    transform: translateX(20px);
+}
+
+.timeline-item.animate-in:nth-child(even) {
+    transform: translateX(0);
+}
+
+/* --- Gallery: shine sweep + lift --- */
+.gallery-item {
+    position: relative;
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.7s ease;
+    pointer-events: none;
+}
+
+.gallery-item:hover::after {
+    left: 130%;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03) translateY(-4px);
+}
+
+/* --- RSVP card: soft breathing glow --- */
+.rsvp-card.animate-in {
+    animation: cardGlow 5s ease-in-out 1s infinite;
+}
+
+@keyframes cardGlow {
+    0%, 100% { box-shadow: 0 0 0 rgba(201, 169, 110, 0); }
+    50% { box-shadow: 0 0 45px rgba(201, 169, 110, 0.18); }
+}
+
+/* --- Nav active link --- */
+.nav-links a.active-link {
+    color: var(--color-gold) !important;
+}
+
+.nav-links a.active-link::after {
+    width: 100%;
+}
+
+/* --- Footer heart divider pulse --- */
+.footer-ornament {
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+/* --- Small screens: shorter hero lines --- */
+@media (max-width: 768px) {
+    body.intro-done .hero-date-line .line {
+        width: 50px;
+    }
+
+    .preloader-names {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body.intro-done .hero-date-line .line {
+        width: 40px;
+    }
+}
+
+/* ============================================
+   STYLING LAYER 2 — Ambience & ornament
+   ============================================ */
+
+/* --- Hero aurora: soft drifting light --- */
+.hero-aurora {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.aurora-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+    will-change: transform;
+}
+
+.aurora-1 {
+    width: 55vw;
+    height: 55vw;
+    left: -15%;
+    top: 5%;
+    background: radial-gradient(circle, rgba(212, 163, 115, 0.45) 0%, transparent 65%);
+    animation: auroraDrift1 22s ease-in-out infinite alternate;
+}
+
+.aurora-2 {
+    width: 45vw;
+    height: 45vw;
+    right: -10%;
+    top: 25%;
+    background: radial-gradient(circle, rgba(232, 213, 176, 0.35) 0%, transparent 65%);
+    animation: auroraDrift2 28s ease-in-out infinite alternate;
+}
+
+.aurora-3 {
+    width: 40vw;
+    height: 40vw;
+    left: 30%;
+    bottom: -15%;
+    background: radial-gradient(circle, rgba(212, 165, 165, 0.28) 0%, transparent 65%);
+    animation: auroraDrift3 25s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift1 {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(12vw, 8vh) scale(1.15); }
+}
+
+@keyframes auroraDrift2 {
+    from { transform: translate(0, 0) scale(1.1); }
+    to { transform: translate(-10vw, -6vh) scale(0.95); }
+}
+
+@keyframes auroraDrift3 {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(-8vw, -10vh) scale(1.2); }
+}
+
+/* --- Ampersand: gentle glowing sway --- */
+body.intro-done .ampersand {
+    animation: ampGlow 5s ease-in-out 3.5s infinite;
+}
+
+@keyframes ampGlow {
+    0%, 100% {
+        text-shadow: 0 0 0 rgba(232, 213, 176, 0);
+        transform: rotate(0deg);
+    }
+    50% {
+        text-shadow: 0 0 24px rgba(232, 213, 176, 0.8);
+        transform: rotate(-4deg);
+    }
+}
+
+/* --- Watermark flourishes behind sections --- */
+.couple-section::before,
+.timeline-section::after,
+.gallery-section::before {
+    position: absolute;
+    font-family: var(--font-script);
+    color: rgba(201, 169, 110, 0.07);
+    pointer-events: none;
+    line-height: 1;
+    z-index: 0;
+}
+
+.couple-section::before {
+    content: 'N & Y';
+    font-size: 16rem;
+    top: 2rem;
+    right: -2rem;
+    transform: rotate(-8deg);
+}
+
+.timeline-section::after {
+    content: '❦';
+    font-size: 18rem;
+    bottom: 1rem;
+    left: -3rem;
+    transform: rotate(12deg);
+}
+
+.gallery-section::before {
+    content: 'Love';
+    font-size: 14rem;
+    top: 3rem;
+    left: -1rem;
+    transform: rotate(-6deg);
+}
+
+.couple-container,
+.timeline,
+.gallery-grid {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Heart ripple rings --- */
+.heart-icon {
+    position: relative;
+}
+
+.heart-icon::before,
+.heart-icon::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 165, 165, 0.7);
+    animation: heartRipple 2.4s ease-out infinite;
+    pointer-events: none;
+}
+
+.heart-icon::after {
+    animation-delay: 1.2s;
+}
+
+@keyframes heartRipple {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.9); opacity: 0; }
+}
+
+/* --- Ornamental inner frame on cards --- */
+.detail-card::after,
+.timeline-content::after {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border: 1px solid rgba(201, 169, 110, 0.45);
+    border-radius: 14px;
+    opacity: 0;
+    transform: scale(0.97);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    pointer-events: none;
+}
+
+.timeline-content {
+    position: relative;
+}
+
+.detail-card:hover::after,
+.timeline-content:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- RSVP card: permanent delicate double border --- */
+.rsvp-card {
+    position: relative;
+}
+
+.rsvp-card::before {
+    content: '';
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(201, 169, 110, 0.25);
+    border-radius: 18px;
+    pointer-events: none;
+}
+
+/* --- Timeline time badge --- */
+.timeline-time {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    background: linear-gradient(135deg, rgba(201, 169, 110, 0.14), rgba(212, 163, 115, 0.08));
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    border-radius: 20px;
+    margin-bottom: 0.7rem;
+}
+
+/* --- Gallery: caption lift + gold frame --- */
+.gallery-placeholder {
+    transition: var(--transition-smooth);
+}
+
+.gallery-item:hover .gallery-placeholder {
+    background: linear-gradient(135deg, var(--color-gold-light), var(--color-cream));
+}
+
+.gallery-placeholder span {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gallery-item:hover .gallery-placeholder span {
+    transform: scale(1.25) rotate(-6deg);
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 10px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Navbar: gold shimmer logo when scrolled --- */
+.navbar.scrolled .nav-logo {
+    background: linear-gradient(110deg, var(--color-primary-dark) 30%, var(--color-gold) 50%, var(--color-primary-dark) 70%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShimmer 5s ease-in-out infinite;
+}
+
+/* --- Buttons: periodic gold sheen sweep --- */
+.calendar-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.calendar-btn::after,
+.rsvp-submit::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    animation: btnSheen 4.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes btnSheen {
+    0%, 60% { left: -80%; }
+    100% { left: 160%; }
+}
+
+/* --- Footer: shimmering names + floating hearts --- */
+.footer {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-names {
+    background: linear-gradient(110deg, var(--color-primary-dark) 30%, var(--color-gold) 50%, var(--color-primary-dark) 70%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShimmer 7s ease-in-out infinite;
+}
+
+.footer-hearts {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -30px;
+    color: var(--color-rose);
+    opacity: 0;
+    animation: heartFloat var(--hfd, 9s) ease-in var(--hfdel, 0s) infinite;
+}
+
+@keyframes heartFloat {
+    0% { opacity: 0; transform: translateY(0) scale(0.7) rotate(0deg); }
+    12% { opacity: 0.5; }
+    75% { opacity: 0.25; }
+    100% { opacity: 0; transform: translateY(-420px) scale(1.1) rotate(18deg); }
+}
+
+/* ============================================
+   STYLING LAYER 3 — Finishing touches
+   ============================================ */
+
+/* --- Elegant scroll-down mouse --- */
+.scroll-mouse {
+    display: inline-block;
+    width: 24px;
+    height: 38px;
+    border: 1.5px solid var(--color-gold-light);
+    border-radius: 14px;
+    position: relative;
+    opacity: 0.9;
+}
+
+.scroll-wheel {
+    position: absolute;
+    left: 50%;
+    top: 7px;
+    width: 3px;
+    height: 7px;
+    margin-left: -1.5px;
+    border-radius: 3px;
+    background: var(--color-gold-light);
+    animation: wheelScroll 2s ease-in-out infinite;
+}
+
+@keyframes wheelScroll {
+    0% { transform: translateY(0); opacity: 1; }
+    60% { transform: translateY(12px); opacity: 0; }
+    61% { transform: translateY(0); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Back to top button --- */
+.back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-gold), var(--color-primary));
+    color: var(--color-white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1400;
+    box-shadow: 0 6px 20px rgba(127, 85, 57, 0.35);
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    pointer-events: none;
+    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.back-to-top:hover {
+    box-shadow: 0 10px 28px rgba(127, 85, 57, 0.5);
+    transform: translateY(-4px) scale(1.05);
+}
+
+.btt-arrow {
+    display: inline-block;
+    animation: bttFloat 2s ease-in-out infinite;
+}
+
+@keyframes bttFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* --- RSVP selects: custom gold chevron --- */
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' fill='none' stroke='%23c9a96e' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.2rem center;
+    padding-right: 2.8rem;
+    cursor: pointer;
+}
+
+/* --- Toast: glassy gold finish --- */
+.toast {
+    background: rgba(255, 253, 247, 0.92);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(201, 169, 110, 0.5);
+    box-shadow: 0 10px 40px rgba(127, 85, 57, 0.25), 0 0 0 4px rgba(201, 169, 110, 0.08);
+}
+
+.toast-icon {
+    animation: sparkle 1.6s ease-in-out infinite;
+}
+
+/* --- Footer quote: ornamental quotation marks --- */
+.footer-message {
+    position: relative;
+    display: inline-block;
+    padding: 0 1.6rem;
+}
+
+.footer-message::before,
+.footer-message::after {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    color: var(--color-gold);
+    opacity: 0.55;
+    position: absolute;
+    line-height: 1;
+}
+
+.footer-message::before {
+    content: '\201C';
+    left: 0;
+    top: -0.3rem;
+}
+
+.footer-message::after {
+    content: '\201D';
+    right: 0;
+    bottom: -0.9rem;
+}
+
+/* --- Mobile nav drawer: staggered gold entrance --- */
+@media (max-width: 768px) {
+    .nav-links {
+        background:
+            radial-gradient(ellipse at 100% 0%, rgba(232, 213, 176, 0.35) 0%, transparent 55%),
+            rgba(255, 253, 247, 0.98);
+        border-left: 1px solid rgba(201, 169, 110, 0.35);
+    }
+
+    .nav-links::before {
+        content: '❦';
+        position: absolute;
+        top: 1.6rem;
+        left: 2rem;
+        font-size: 1.6rem;
+        color: var(--color-gold);
+    }
+
+    .nav-links li {
+        opacity: 0;
+        transform: translateX(24px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .nav-links.open li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .nav-links.open li:nth-child(1) { transition-delay: 0.08s; }
+    .nav-links.open li:nth-child(2) { transition-delay: 0.14s; }
+    .nav-links.open li:nth-child(3) { transition-delay: 0.2s; }
+    .nav-links.open li:nth-child(4) { transition-delay: 0.26s; }
+    .nav-links.open li:nth-child(5) { transition-delay: 0.32s; }
+    .nav-links.open li:nth-child(6) { transition-delay: 0.38s; }
+    .nav-links.open li:nth-child(7) { transition-delay: 0.44s; }
+
+    .nav-links a {
+        border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+        padding-bottom: 0.7rem !important;
+    }
+
+    .nav-invitation-btn {
+        border-bottom: none !important;
+    }
+
+    .back-to-top {
+        width: 42px;
+        height: 42px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* --- Watermarks scale down on smaller screens --- */
+@media (max-width: 768px) {
+    .couple-section::before { font-size: 9rem; right: -3rem; }
+    .timeline-section::after { font-size: 10rem; left: -4rem; }
+    .gallery-section::before { font-size: 8rem; }
+
+    .aurora-blob { filter: blur(40px); }
+    .aurora-1 { width: 90vw; height: 90vw; }
+    .aurora-2 { width: 75vw; height: 75vw; }
+    .aurora-3 { width: 70vw; height: 70vw; }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .petals-container {
         display: none;
@@ -1760,13 +2699,80 @@ body {
     .petal,
     .hero-ornament,
     .scroll-arrow,
-    .hero::before {
+    .hero::before,
+    .hero-sparkles,
+    .aurora-blob,
+    body.intro-done .ampersand,
+    .heart-icon::before,
+    .heart-icon::after,
+    .calendar-btn::after,
+    .rsvp-submit::after,
+    .navbar.scrolled .nav-logo,
+    .footer-names,
+    .floating-heart,
+    .scroll-wheel,
+    .btt-arrow,
+    .toast-icon,
+    body.names-settled .groom-name,
+    body.names-settled .bride-name,
+    .rsvp-card.animate-in,
+    .couple-image-wrapper::after,
+    .footer-ornament,
+    .preloader-rings .ring,
+    .preloader-names,
+    .preloader-date {
         animation: none !important;
+    }
+
+    .preloader {
+        display: none;
+    }
+
+    .hero-content,
+    .hero-ornament.top,
+    .hero-subtitle,
+    .hero-date-line,
+    .hero-venue,
+    .countdown,
+    .scroll-down,
+    .hero-names .letter {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+
+    .hero-date-line .line {
+        width: 80px !important;
+    }
+
+    .groom-name, .bride-name {
+        background: none;
+        -webkit-text-fill-color: currentColor;
+    }
+
+    .preloader-names, .preloader-date {
+        opacity: 1;
     }
 
     [data-animate] {
         opacity: 1;
         transform: none;
         transition: none;
+    }
+
+    .section-header[data-animate] .section-ornament,
+    .section-header[data-animate] .section-title,
+    .section-header[data-animate] .section-subtitle {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .section-header::after {
+        width: 180px;
+    }
+
+    .timeline-item .timeline-dot {
+        transform: scale(1);
     }
 }
