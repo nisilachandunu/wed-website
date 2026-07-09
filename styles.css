@@ -706,10 +706,20 @@ html.menu-open {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.4rem;
     opacity: 0;
     transform: scale(0.5);
     transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+}
+
+/* On wide layouts, line the heart up with the portraits' midline
+   instead of the middle of the full cards (portrait 220px tall,
+   badge circle 88px + 1.4rem gap above the date) */
+@media (min-width: 993px) {
+    .couple-heart {
+        align-self: flex-start;
+        margin-top: 66px;
+    }
 }
 
 .couple-heart.animate-in {
@@ -718,13 +728,24 @@ html.menu-open {
 }
 
 .heart-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(150deg, #fffdf7, #f9e7e2);
+    border: 1px solid rgba(212, 165, 165, 0.5);
+    box-shadow: 0 8px 26px rgba(212, 165, 165, 0.28);
     color: var(--color-rose);
-    animation: heartbeat 1.5s ease-in-out infinite;
 }
 
+/* The beat lives on the heart itself so the badge and ripples stay steady */
 .heart-svg {
-    width: 60px;
-    height: 60px;
+    width: 36px;
+    height: 36px;
+    display: block;
+    animation: heartbeat 1.5s ease-in-out infinite;
 }
 
 @keyframes heartbeat {
@@ -1496,7 +1517,6 @@ html.menu-open {
     }
 
     .couple-heart {
-        order: -1;
         margin: 0;
     }
 
@@ -2411,20 +2431,20 @@ body.intro-done .ampersand {
 .heart-icon::after {
     content: '';
     position: absolute;
-    inset: -6px;
+    inset: -4px;
     border-radius: 50%;
-    border: 1px solid rgba(212, 165, 165, 0.7);
-    animation: heartRipple 2.4s ease-out infinite;
+    border: 1px solid rgba(212, 165, 165, 0.55);
+    animation: heartRipple 2.6s ease-out infinite;
     pointer-events: none;
 }
 
 .heart-icon::after {
-    animation-delay: 1.2s;
+    animation-delay: 1.3s;
 }
 
 @keyframes heartRipple {
-    0% { transform: scale(0.8); opacity: 0.8; }
-    100% { transform: scale(1.9); opacity: 0; }
+    0% { transform: scale(0.96); opacity: 0.65; }
+    100% { transform: scale(1.35); opacity: 0; }
 }
 
 /* --- Ornamental inner frame on cards --- */
@@ -2813,6 +2833,7 @@ body.intro-done .ampersand {
     body.intro-done .ampersand,
     .heart-icon::before,
     .heart-icon::after,
+    .heart-svg,
     .calendar-btn::after,
     .rsvp-submit::after,
     .navbar.scrolled .nav-logo,
