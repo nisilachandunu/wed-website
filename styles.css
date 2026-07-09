@@ -114,23 +114,6 @@ html.menu-open {
     letter-spacing: 0.5px;
 }
 
-/* Center the last card (Reception) */
-.details-container .detail-card:last-child{
-    grid-column: 1 / -1;
-    justify-self: center;
-    max-width: 320px;
-    width: 100%;
-}
-
-@media (min-width: 768px) {
-    .details-container .detail-card:last-child{
-        grid-column: 1 / -1;
-        justify-self: center;
-        max-width: 320px;
-        width: 100%;
-    }
-}
-
 /* Add to calendar button */
 .calendar-btn{
     display:inline-block;
