@@ -1908,12 +1908,21 @@ html.menu-open {
 
 .preloader-date {
     font-family: var(--font-serif);
-    font-size: 0.95rem;
-    letter-spacing: 5px;
-    color: var(--color-gold);
-    margin-top: 0.4rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 6px;
+    color: var(--color-primary-dark);
+    text-shadow: 0 0 12px rgba(201, 169, 110, 0.55);
+    margin-top: 0.6rem;
     opacity: 0;
-    animation: preloaderFadeUp 1s ease 1.25s forwards;
+    animation:
+        preloaderFadeUp 1s ease 1.25s forwards,
+        preloaderDateGlow 2.4s ease-in-out 2.25s infinite;
+}
+
+@keyframes preloaderDateGlow {
+    0%, 100% { text-shadow: 0 0 12px rgba(201, 169, 110, 0.55); }
+    50% { text-shadow: 0 0 18px rgba(201, 169, 110, 0.9), 0 0 30px rgba(201, 169, 110, 0.4); }
 }
 
 @keyframes preloaderFadeUp {
