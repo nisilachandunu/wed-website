@@ -1542,12 +1542,14 @@ html.menu-open {
 
     /* Timeline Mobile */
     .timeline {
-        padding-left: 2rem;
+        /* px, not rem: the rail sits at a fixed 13px, so the card
+           offset must not shrink with the mobile root font size */
+        padding-left: 34px;
     }
 
     .timeline-dot {
-        /* rail center 13px - 7px half-dot - 2rem padding */
-        left: calc(6px - 2rem);
+        /* rail center 13px - 7px half-dot - 34px padding */
+        left: calc(6px - 34px);
         width: 14px;
         height: 14px;
     }
@@ -1750,12 +1752,12 @@ html.menu-open {
 
     /* Timeline Small Mobile */
     .timeline {
-        padding-left: 1.5rem;
+        padding-left: 30px;
     }
 
     .timeline-dot {
-        /* rail center 13px - 6px half-dot - 1.5rem padding */
-        left: calc(7px - 1.5rem);
+        /* rail center 13px - 6px half-dot - 30px padding */
+        left: calc(7px - 30px);
         width: 12px;
         height: 12px;
     }
