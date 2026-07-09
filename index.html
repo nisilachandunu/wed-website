@@ -1,29 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="color-scheme" content="light">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
+    <meta name="color-scheme" content="light" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Nisila & Yashmi | Wedding - August 20, 2026</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,88 C25,65 5,50 5,30 C5,15 15,5 30,5 C40,5 48,12 50,20 C52,12 60,5 70,5 C85,5 95,15 95,30 C95,50 75,65 50,88Z' fill='%23c9a96e'/%3E%3C/svg%3E">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,88 C25,65 5,50 5,30 C5,15 15,5 30,5 C40,5 48,12 50,20 C52,12 60,5 70,5 C85,5 95,15 95,30 C95,50 75,65 50,88Z' fill='%23c9a96e'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <!-- Intro Preloader -->
     <div class="preloader" id="preloader">
-        <div class="preloader-inner">
-            <svg class="preloader-rings" viewBox="0 0 130 78" fill="none" aria-hidden="true">
-                <circle class="ring ring-1" cx="48" cy="39" r="27"/>
-                <circle class="ring ring-2" cx="82" cy="39" r="27"/>
-            </svg>
-            <p class="preloader-names">Nisila &amp; Yashmi</p>
-            <p class="preloader-date">20 . 08 . 2026</p>
-        </div>
+      <div class="preloader-inner">
+        <svg
+          class="preloader-rings"
+          viewBox="0 0 130 78"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle class="ring ring-1" cx="48" cy="39" r="27" />
+          <circle class="ring ring-2" cx="82" cy="39" r="27" />
+        </svg>
+        <p class="preloader-names">Nisila &amp; Yashmi</p>
+        <p class="preloader-date">20 . 08 . 2026</p>
+      </div>
     </div>
 
     <!-- Scroll Progress Bar -->
@@ -34,145 +48,186 @@
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="nav-logo">N & Y</div>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#couple">Our Story</a></li>
-            <li><a href="#details">Details</a></li>
-            <li><a href="#timeline">Timeline</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
-            <li><a href="invitation.html" class="nav-invitation-btn">Invitation</a></li>
-        </ul>
+      <div class="nav-logo">N & Y</div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#couple">Our Story</a></li>
+        <li><a href="#details">Details</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+        <li>
+          <a href="invitation.html" class="nav-invitation-btn">Invitation</a>
+        </li>
+      </ul>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-aurora" aria-hidden="true">
-            <span class="aurora-blob aurora-1"></span>
-            <span class="aurora-blob aurora-2"></span>
-            <span class="aurora-blob aurora-3"></span>
+      <div class="hero-aurora" aria-hidden="true">
+        <span class="aurora-blob aurora-1"></span>
+        <span class="aurora-blob aurora-2"></span>
+        <span class="aurora-blob aurora-3"></span>
+      </div>
+      <div class="hero-sparkles" id="heroSparkles"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-ornament top">✦</div>
+        <p class="hero-subtitle">We're Getting Married</p>
+        <h1 class="hero-names">
+          <span class="groom-name">Nisila</span>
+          <span class="ampersand">&</span>
+          <span class="bride-name">Yashmi</span>
+        </h1>
+        <div class="hero-date-line">
+          <span class="line"></span>
+          <span class="date-text">August 20, 2026</span>
+          <span class="line"></span>
         </div>
-        <div class="hero-sparkles" id="heroSparkles"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-ornament top">✦</div>
-            <p class="hero-subtitle">We're Getting Married</p>
-            <h1 class="hero-names">
-                <span class="groom-name">Nisila</span>
-                <span class="ampersand">&</span>
-                <span class="bride-name">Yashmi</span>
-            </h1>
-            <div class="hero-date-line">
-                <span class="line"></span>
-                <span class="date-text">August 20, 2026</span>
-                <span class="line"></span>
-            </div>
-            <p class="hero-venue">Sawingir Hills, Gonapala</p>
+        <p class="hero-venue">Sawingir Hills, Gonapala</p>
 
-            <!-- Countdown Timer -->
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">000</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Seconds</span>
-                </div>
-            </div>
-
-            <a href="#couple" class="scroll-down">
-                <span>Scroll Down</span>
-                <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
-            </a>
+        <!-- Countdown Timer -->
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-number" id="days">000</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="hours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="minutes">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="seconds">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
         </div>
+
+        <a href="#couple" class="scroll-down">
+          <span>Scroll Down</span>
+          <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+        </a>
+      </div>
     </section>
 
     <!-- Couple Section -->
     <section class="section couple-section" id="couple">
-        <div class="section-header" data-animate>
-            <span class="section-ornament">❧</span>
-            <h2 class="section-title">The Happy Couple</h2>
-            <p class="section-subtitle">Two hearts, one beautiful journey</p>
+      <div class="section-header" data-animate>
+        <span class="section-ornament">❧</span>
+        <h2 class="section-title">The Happy Couple</h2>
+        <p class="section-subtitle">Two hearts, one beautiful journey</p>
+      </div>
+
+      <div class="couple-container">
+        <div class="couple-card groom-card" data-animate>
+          <div class="couple-image-wrapper">
+            <div class="couple-image-placeholder groom-placeholder">
+              <svg
+                class="placeholder-icon groom-icon"
+                viewBox="0 0 64 64"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 14 L32 26 L44 14 L44 20 L36 32 L44 44 L44 50 L20 50 L20 44 L28 32 L20 20 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linejoin="round"
+                />
+                <circle cx="32" cy="32" r="3" fill="currentColor" />
+              </svg>
+              <span class="placeholder-text">Groom</span>
+            </div>
+          </div>
+          <h3 class="couple-name">Nisila Chandunu Bambarenda</h3>
+          <p class="couple-parents">
+            Son of<br />
+            <strong>Mr. Susil Bambarenda</strong><br />
+            &<br />
+            <strong>Mrs. Champika Shirani Edirisinghe</strong>
+          </p>
         </div>
 
-        <div class="couple-container">
-            <div class="couple-card groom-card" data-animate>
-                <div class="couple-image-wrapper">
-                    <div class="couple-image-placeholder groom-placeholder">
-                        <svg class="placeholder-icon groom-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 14 L32 26 L44 14 L44 20 L36 32 L44 44 L44 50 L20 50 L20 44 L28 32 L20 20 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                            <circle cx="32" cy="32" r="3" fill="currentColor"/>
-                        </svg>
-                        <span class="placeholder-text">Groom</span>
-                    </div>
-                </div>
-                <h3 class="couple-name">Nisila Chandunu Bambarenda</h3>
-                <p class="couple-parents">
-                    Son of<br>
-                    <strong>Mr. Susil Bambarenda</strong><br>
-                    &<br>
-                    <strong>Mrs. Champika Shirani Edirisinghe</strong>
-                </p>
-            </div>
-
-            <div class="couple-heart" data-animate>
-                <div class="heart-icon">
-                    <svg viewBox="0 0 100 100" class="heart-svg">
-                        <path d="M50,88 C25,65 5,50 5,30 C5,15 15,5 30,5 C40,5 48,12 50,20 C52,12 60,5 70,5 C85,5 95,15 95,30 C95,50 75,65 50,88Z" fill="currentColor"/>
-                    </svg>
-                </div>
-                <p class="couple-date">20 . 08 . 2026</p>
-            </div>
-
-            <div class="couple-card bride-card" data-animate>
-                <div class="couple-image-wrapper">
-                    <div class="couple-image-placeholder bride-placeholder">
-                        <svg class="placeholder-icon bride-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M32 12 C35 12 37 15 37 18 C37 21 35 23 32 23 C29 23 27 21 27 18 C27 15 29 12 32 12 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                            <path d="M32 23 L32 30" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                            <path d="M32 30 C22 30 16 40 16 50 L48 50 C48 40 42 30 32 30 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                            <path d="M24 40 C26 37 30 37 32 40 C34 37 38 37 40 40" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-                        </svg>
-                        <span class="placeholder-text">Bride</span>
-                    </div>
-                </div>
-                <h3 class="couple-name">Yashmi Bihara Amarakoon</h3>
-                <p class="couple-parents">
-                    Daughter of<br>
-                    <strong>Mr. Ajith Lal Amarakoon</strong><br>
-                    &<br>
-                    <strong>Mrs. Lakshmi Kumari Hemachandra</strong>
-                </p>
-            </div>
+        <div class="couple-heart" data-animate>
+          <div class="heart-icon">
+            <svg viewBox="0 0 100 100" class="heart-svg">
+              <path
+                d="M50,88 C25,65 5,50 5,30 C5,15 15,5 30,5 C40,5 48,12 50,20 C52,12 60,5 70,5 C85,5 95,15 95,30 C95,50 75,65 50,88Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+          <p class="couple-date">20 . 08 . 2026</p>
         </div>
+
+        <div class="couple-card bride-card" data-animate>
+          <div class="couple-image-wrapper">
+            <div class="couple-image-placeholder bride-placeholder">
+              <svg
+                class="placeholder-icon bride-icon"
+                viewBox="0 0 64 64"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M32 12 C35 12 37 15 37 18 C37 21 35 23 32 23 C29 23 27 21 27 18 C27 15 29 12 32 12 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                />
+                <path
+                  d="M32 23 L32 30"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M32 30 C22 30 16 40 16 50 L48 50 C48 40 42 30 32 30 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M24 40 C26 37 30 37 32 40 C34 37 38 37 40 40"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+              </svg>
+              <span class="placeholder-text">Bride</span>
+            </div>
+          </div>
+          <h3 class="couple-name">Yashmi Bihara Amarakoon</h3>
+          <p class="couple-parents">
+            Daughter of<br />
+            <strong>Mr. Ajith Lal Amarakoon</strong><br />
+            &<br />
+            <strong>Mrs. Lakshmi Kumari Hemachandra</strong>
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Love Story Timeline -->
     <section class="section story-section" id="details">
-        <div class="section-header" data-animate>
-            <span class="section-ornament">❧</span>
-            <h2 class="section-title">Wedding Details</h2>
-            <p class="section-subtitle">Everything you need to know</p>
-        </div>
+      <div class="section-header" data-animate>
+        <span class="section-ornament">❧</span>
+        <h2 class="section-title">Wedding Details</h2>
+        <p class="section-subtitle">Everything you need to know</p>
+      </div>
 
-        <div class="details-container">
-            <!-- <div class="detail-card" data-animate>
+      <div class="details-container">
+        <!-- <div class="detail-card" data-animate>
                 <div class="detail-icon" aria-hidden="true">D</div>
                 <h3>Date</h3>
                 <p class="detail-main">August 20, 2026</p>
@@ -180,276 +235,334 @@
                 <p class="detail-sub">10.00 AM to 04.00 PM</p>
             </div> -->
 
-            <!-- <div class="detail-card" data-animate>
+        <!-- <div class="detail-card" data-animate>
                 <div class="detail-icon" aria-hidden="true">V</div>
                 <h3>Venue</h3>
                 <p class="detail-main">Sawingir Hills</p>
                 <p class="detail-sub">Gonapala, Sri Lanka</p>
             </div> -->
-            <div class="detail-card" data-animate>
-                <div class="detail-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3.5" y="5" width="17" height="16" rx="2.5"/>
-                        <line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/>
-                        <line x1="7.5" y1="3" x2="7.5" y2="6.5"/>
-                        <line x1="16.5" y1="3" x2="16.5" y2="6.5"/>
-                        <circle cx="12" cy="14.5" r="1.4" fill="currentColor" stroke="none"/>
-                    </svg>
-                </div>
-                <h3>Date</h3>
-                <p class="detail-main">August 20, 2026</p>
-                <!-- <p class="detail-sub">Thursday</p> -->
+        <div class="detail-card" data-animate>
+          <div class="detail-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3.5" y="5" width="17" height="16" rx="2.5" />
+              <line x1="3.5" y1="9.5" x2="20.5" y2="9.5" />
+              <line x1="7.5" y1="3" x2="7.5" y2="6.5" />
+              <line x1="16.5" y1="3" x2="16.5" y2="6.5" />
+              <circle
+                cx="12"
+                cy="14.5"
+                r="1.4"
+                fill="currentColor"
+                stroke="none"
+              />
+            </svg>
+          </div>
+          <h3>Date</h3>
+          <p class="detail-main">August 20, 2026</p>
+          <!-- <p class="detail-sub">Thursday</p> -->
 
-                <a href="wedding.ics" class="calendar-btn" download>
-                    Add to Calendar
-                </a>
-            </div>
-
-            <!-- Venue -->
-            <div class="detail-card" data-animate>
-                <div class="detail-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/>
-                        <circle cx="12" cy="9.5" r="2.4"/>
-                    </svg>
-                </div>
-                <h3>Venue</h3>
-            
-                <a 
-                    class="venue-link"
-                    href="https://www.google.com/maps/place/Sawingir+Hills/data=!4m2!3m1!1s0x0:0x8412a55befcddfe5?sa=X&ved=1t:2428&ictx=111"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open Sawingir Hills location in Google Maps"
-                >
-                    <p class="detail-main">Sawingir Hills</p>
-                    <p class="detail-sub">Gonapala, Sri Lanka</p>
-                </a>
-            
-            </div>
-
-            <div class="detail-card" data-animate>
-                <div class="detail-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="9" cy="15" r="4.5"/>
-                        <circle cx="15" cy="15" r="4.5"/>
-                        <path d="M9.5 8 12 3l2.5 5"/>
-                    </svg>
-                </div>
-                <h3>Ceremony</h3>
-                <p class="detail-main">Poruwa Ceremony</p>
-                <p class="detail-sub">Traditional Buddhist wedding</p>
-            </div>
-
-            <div class="detail-card" data-animate>
-                <div class="detail-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M7 4h10l-1.2 6.5a3.8 3.8 0 0 1-7.6 0Z"/>
-                        <line x1="12" y1="14" x2="12" y2="20"/>
-                        <line x1="8.5" y1="20" x2="15.5" y2="20"/>
-                    </svg>
-                </div>
-                <h3>Reception</h3>
-                <p class="detail-main">Celebration</p>
-                <p class="detail-sub">Lunch, dancing & joy</p>
-            </div>
+          <a href="wedding.ics" class="calendar-btn" download>
+            Add to Calendar
+          </a>
         </div>
+
+        <!-- Venue -->
+        <div class="detail-card" data-animate>
+          <div class="detail-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"
+              />
+              <circle cx="12" cy="9.5" r="2.4" />
+            </svg>
+          </div>
+          <h3>Venue</h3>
+
+          <a
+            class="venue-link"
+            href="https://www.google.com/maps/place/Sawingir+Hills/data=!4m2!3m1!1s0x0:0x8412a55befcddfe5?sa=X&ved=1t:2428&ictx=111"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Sawingir Hills location in Google Maps"
+          >
+            <p class="detail-main">Sawingir Hills</p>
+            <p class="detail-sub">Gonapala, Sri Lanka</p>
+          </a>
+        </div>
+
+        <div class="detail-card" data-animate>
+          <div class="detail-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="9" cy="15" r="4.5" />
+              <circle cx="15" cy="15" r="4.5" />
+              <path d="M9.5 8 12 3l2.5 5" />
+            </svg>
+          </div>
+          <h3>Ceremony</h3>
+          <p class="detail-main">Poruwa Ceremony</p>
+          <p class="detail-sub">Traditional Buddhist wedding</p>
+        </div>
+
+        <div class="detail-card" data-animate>
+          <div class="detail-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M7 4h10l-1.2 6.5a3.8 3.8 0 0 1-7.6 0Z" />
+              <line x1="12" y1="14" x2="12" y2="20" />
+              <line x1="8.5" y1="20" x2="15.5" y2="20" />
+            </svg>
+          </div>
+          <h3>Reception</h3>
+          <p class="detail-main">Celebration</p>
+          <p class="detail-sub">Lunch, Dancing & Joy</p>
+        </div>
+      </div>
     </section>
 
     <!-- Timeline Section -->
     <section class="section timeline-section" id="timeline">
-        <div class="section-header" data-animate>
-            <span class="section-ornament">❧</span>
-            <h2 class="section-title">Wedding Day Timeline</h2>
-            <p class="section-subtitle">A day to remember forever</p>
-        </div>
+      <div class="section-header" data-animate>
+        <span class="section-ornament">❧</span>
+        <h2 class="section-title">Wedding Day Timeline</h2>
+        <p class="section-subtitle">A day to remember forever</p>
+      </div>
 
-        <div class="timeline">
-            <div class="timeline-item" data-animate>
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="timeline-time">9.16 AM</span>
-                    <h3>Poruwa Ceremony</h3>
-                    <p>The traditional Sri Lankan wedding ceremony at the beautifully decorated Poruwa.</p>
-                </div>
-            </div>
-            <div class="timeline-item" data-animate>
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="timeline-time">10.17 AM</span>
-                    <h3>Registration</h3>
-                    <p>Official registration of the marriage.</p>
-                </div>
-            </div>
-            <div class="timeline-item" data-animate>
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="timeline-time">10.30 AM</span>
-                    <h3>Reception</h3>
-                    <p>Welcome and celebration with family and friends.</p>
-                </div>
-            </div>
-            <div class="timeline-item" data-animate>
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="timeline-time">12.00 PM</span>
-                    <h3>Lunch</h3>
-                    <p>A festive lunch at Sawingir Hills.</p>
-                </div>
-            </div>
-            <div class="timeline-item" data-animate>
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="timeline-time">3.40 PM</span>
-                    <h3>Going Away</h3>
-                    <p>We bid farewell as the newlyweds depart.</p>
-                </div>
-            </div>
+      <div class="timeline">
+        <div class="timeline-item" data-animate>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-time">9.16 AM</span>
+            <h3>Poruwa Ceremony</h3>
+            <p>
+              The traditional Sri Lankan wedding ceremony at the beautifully
+              decorated Poruwa.
+            </p>
+          </div>
         </div>
+        <div class="timeline-item" data-animate>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-time">10.17 AM</span>
+            <h3>Registration</h3>
+            <p>Official registration of the marriage.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-animate>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-time">10.30 AM</span>
+            <h3>Reception</h3>
+            <p>Welcome and celebration with family and friends.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-animate>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-time">12.00 PM</span>
+            <h3>Lunch</h3>
+            <p>A festive lunch at Sawingir Hills.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-animate>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-time">3.40 PM</span>
+            <h3>Going Away</h3>
+            <p>We bid farewell as the newlyweds depart.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Gallery Placeholder Section -->
     <section class="section gallery-section" id="gallery">
-        <div class="section-header" data-animate>
-            <span class="section-ornament">❧</span>
-            <h2 class="section-title">Our Gallery</h2>
-            <p class="section-subtitle">Moments captured in time</p>
-        </div>
+      <div class="section-header" data-animate>
+        <span class="section-ornament">❧</span>
+        <h2 class="section-title">Our Gallery</h2>
+        <p class="section-subtitle">Moments captured in time</p>
+      </div>
 
-        <div class="gallery-grid">
-            <div class="gallery-item gi-1" data-animate>
-                <div class="gallery-placeholder">
-                    <span>01</span>
-                    <p>Photo 1</p>
-                </div>
-            </div>
-            <div class="gallery-item gi-2" data-animate>
-                <div class="gallery-placeholder">
-                    <span>02</span>
-                    <p>Photo 2</p>
-                </div>
-            </div>
-            <div class="gallery-item gi-3" data-animate>
-                <div class="gallery-placeholder">
-                    <span>03</span>
-                    <p>Photo 3</p>
-                </div>
-            </div>
-            <div class="gallery-item gi-4" data-animate>
-                <div class="gallery-placeholder">
-                    <span>04</span>
-                    <p>Photo 4</p>
-                </div>
-            </div>
-            <div class="gallery-item gi-5" data-animate>
-                <div class="gallery-placeholder">
-                    <span>05</span>
-                    <p>Photo 5</p>
-                </div>
-            </div>
-            <div class="gallery-item gi-6" data-animate>
-                <div class="gallery-placeholder">
-                    <span>06</span>
-                    <p>Photo 6</p>
-                </div>
-            </div>
+      <div class="gallery-grid">
+        <div class="gallery-item gi-1" data-animate>
+          <div class="gallery-placeholder">
+            <span>01</span>
+            <p>Photo 1</p>
+          </div>
         </div>
-        <p class="gallery-note">Photos will be updated as the big day approaches.</p>
+        <div class="gallery-item gi-2" data-animate>
+          <div class="gallery-placeholder">
+            <span>02</span>
+            <p>Photo 2</p>
+          </div>
+        </div>
+        <div class="gallery-item gi-3" data-animate>
+          <div class="gallery-placeholder">
+            <span>03</span>
+            <p>Photo 3</p>
+          </div>
+        </div>
+        <div class="gallery-item gi-4" data-animate>
+          <div class="gallery-placeholder">
+            <span>04</span>
+            <p>Photo 4</p>
+          </div>
+        </div>
+        <div class="gallery-item gi-5" data-animate>
+          <div class="gallery-placeholder">
+            <span>05</span>
+            <p>Photo 5</p>
+          </div>
+        </div>
+        <div class="gallery-item gi-6" data-animate>
+          <div class="gallery-placeholder">
+            <span>06</span>
+            <p>Photo 6</p>
+          </div>
+        </div>
+      </div>
+      <p class="gallery-note">
+        Photos will be updated as the big day approaches.
+      </p>
     </section>
 
     <!-- RSVP Section -->
     <section class="section rsvp-section" id="rsvp">
-        <div class="rsvp-bg-pattern"></div>
-        <div class="section-header" data-animate>
-            <span class="section-ornament light">❧</span>
-            <h2 class="section-title light">RSVP</h2>
-            <p class="section-subtitle light">We would be honored by your presence</p>
-        </div>
+      <div class="rsvp-bg-pattern"></div>
+      <div class="section-header" data-animate>
+        <span class="section-ornament light">❧</span>
+        <h2 class="section-title light">RSVP</h2>
+        <p class="section-subtitle light">
+          We would be honored by your presence
+        </p>
+      </div>
 
-        <div class="rsvp-container">
-            <div class="rsvp-card" data-animate>
-                <p class="rsvp-message">
-                    Please let us know if you'll be joining us on our special day. 
-                    Your presence would mean the world to us!
-                </p>
+      <div class="rsvp-container">
+        <div class="rsvp-card" data-animate>
+          <p class="rsvp-message">
+            Please let us know if you'll be joining us on our special day. Your
+            presence would mean the world to us!
+          </p>
 
-                <form class="rsvp-form" id="rsvpForm">
-                    <div class="form-group">
-                        <input type="text" id="guestName" placeholder="Your Full Name" required>
-                        <label for="guestName">Your Full Name</label>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="tel" id="guestPhone" placeholder="Your Phone Number" required>
-                        <label for="guestPhone">Your Phone Number</label>
-                    </div>
-
-                    <div class="form-group">
-                        <select id="attending" required>
-                            <option value="" disabled selected>Will you attend?</option>
-                            <option value="yes">Joyfully Accept</option>
-                            <option value="no">Regretfully Decline</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <select id="guests">
-                            <option value="1">1 Guest</option>
-                            <option value="2" selected>2 Guests</option>
-                            <option value="3">3 Guests</option>
-                            <option value="4">4 Guests</option>
-                            <option value="5">5+ Guests</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <textarea id="message" placeholder="Leave us a message (optional)" rows="3"></textarea>
-                        <label for="message">Message</label>
-                    </div>
-
-                    <button type="submit" class="rsvp-submit">
-                        <span>Send RSVP</span>
-                    </button>
-                </form>
-
-                <div class="rsvp-contact">
-                    <p>Or reach us directly:</p>
-                    <div class="contact-numbers">
-                        <a href="tel:+94701990692" class="contact-link">
-                            <span>+94 70 199 0692</span>
-                        </a>
-                        <a href="tel:+94701941261" class="contact-link">
-                            <span>+94 70 194 1261</span>
-                        </a>
-                    </div>
-                </div>
+          <form class="rsvp-form" id="rsvpForm">
+            <div class="form-group">
+              <input
+                type="text"
+                id="guestName"
+                placeholder="Your Full Name"
+                required
+              />
+              <label for="guestName">Your Full Name</label>
             </div>
+
+            <div class="form-group">
+              <input
+                type="tel"
+                id="guestPhone"
+                placeholder="Your Phone Number"
+                required
+              />
+              <label for="guestPhone">Your Phone Number</label>
+            </div>
+
+            <div class="form-group">
+              <select id="attending" required>
+                <option value="" disabled selected>Will you attend?</option>
+                <option value="yes">Joyfully Accept</option>
+                <option value="no">Regretfully Decline</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <select id="guests">
+                <option value="1">1 Guest</option>
+                <option value="2" selected>2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5+ Guests</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <textarea
+                id="message"
+                placeholder="Leave us a message (optional)"
+                rows="3"
+              ></textarea>
+              <label for="message">Message</label>
+            </div>
+
+            <button type="submit" class="rsvp-submit">
+              <span>Send RSVP</span>
+            </button>
+          </form>
+
+          <div class="rsvp-contact">
+            <p>Or reach us directly:</p>
+            <div class="contact-numbers">
+              <a href="tel:+94701990692" class="contact-link">
+                <span>+94 70 199 0692</span>
+              </a>
+              <a href="tel:+94701941261" class="contact-link">
+                <span>+94 70 194 1261</span>
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-hearts" id="footerHearts" aria-hidden="true"></div>
-        <div class="footer-content" data-animate>
-            <div class="footer-ornament">❦</div>
-            <h2 class="footer-names">Nisila & Yashmi</h2>
-            <p class="footer-date">August 20, 2026 — Sawingir Hills, Gonapala</p>
-            <p class="footer-message">"Two souls with a single thought, two hearts that beat as one."</p>
-            <div class="footer-ornament">❦</div>
-            <p class="footer-copyright">Made with love for our special day</p>
-        </div>
+      <div class="footer-hearts" id="footerHearts" aria-hidden="true"></div>
+      <div class="footer-content" data-animate>
+        <div class="footer-ornament">❦</div>
+        <h2 class="footer-names">Nisila & Yashmi</h2>
+        <p class="footer-date">August 20, 2026 — Sawingir Hills, Gonapala</p>
+        <p class="footer-message">
+          "Two souls with a single thought, two hearts that beat as one."
+        </p>
+        <div class="footer-ornament">❦</div>
+        <p class="footer-copyright">Made with love for our special day</p>
+      </div>
     </footer>
 
     <!-- Back to top -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <span class="btt-arrow">↑</span>
+      <span class="btt-arrow">↑</span>
     </button>
 
     <!-- Toast notification -->
     <div class="toast" id="toast">
-        <span class="toast-message">Thank you! Your RSVP has been received.</span>
+      <span class="toast-message">Thank you! Your RSVP has been received.</span>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

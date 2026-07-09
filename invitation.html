@@ -326,7 +326,6 @@
         color: #434c1f;
         font-family: "Cormorant Garamond", serif;
         font-weight: 700;
-        text-transform: uppercase;
         letter-spacing: 0.06em;
         white-space: nowrap;
         line-height: 1;
@@ -486,6 +485,11 @@
           /* storage unavailable (private mode) — fall back to URL only */
         }
 
+        // "kasun perera" / "KASUN PERERA" -> "Kasun Perera"
+        guest = guest
+          .toLowerCase()
+          .replace(/(^|[\s\-'])\p{L}/gu, (c) => c.toUpperCase());
+
         if (guest) {
           const viewer = document.getElementById("invitationViewer");
           const nameEl = document.getElementById("guestName");
@@ -509,6 +513,105 @@
           if (headerSub) {
             headerSub.textContent = `especially for you, ${guest}`;
           }
+
+          personalizeDownload(guest);
+        }
+
+        // Replace the static PDF download with a personalized image of the
+        // card that has the guest's name rendered on it
+        function personalizeDownload(name) {
+          const downloadBtn = document.querySelector('a[href="invitation.pdf"][download]');
+          if (!downloadBtn) return;
+
+          downloadBtn.addEventListener("click", async (e) => {
+            e.preventDefault();
+            try {
+              const canvas = await renderPersonalizedCard(name);
+              const blob = await new Promise((resolve) =>
+                canvas.toBlob(resolve, "image/jpeg", 0.92)
+              );
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = `Wedding-Invitation-${name.replace(/\s+/g, "-")}.jpg`;
+              a.click();
+              setTimeout(() => URL.revokeObjectURL(url), 5000);
+            } catch (err) {
+              // Canvas failed (very old browser) — fall back to the plain PDF
+              window.location.href = downloadBtn.href;
+            }
+          });
+        }
+
+        async function renderPersonalizedCard(name) {
+          await document.fonts.load('700 100px "Cormorant Garamond"');
+
+          const img = new Image();
+          img.src = "assets/invitation-card.jpg";
+          await img.decode();
+
+          const W = img.naturalWidth;
+          const H = img.naturalHeight;
+          const canvas = document.createElement("canvas");
+          canvas.width = W;
+          canvas.height = H;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+
+          // Cover the printed "MR / MRS / MISS ....." line — same geometry,
+          // colors, and soft edge fades as the on-screen .guest-name-mask
+          const mw = W * 0.69;
+          const mh = H * 0.031;
+          const patch = document.createElement("canvas");
+          patch.width = Math.ceil(mw);
+          patch.height = Math.ceil(mh);
+          const p = patch.getContext("2d");
+
+          const wash = p.createLinearGradient(0, 0, mw, 0);
+          wash.addColorStop(0, "#d5d9cc");
+          wash.addColorStop(0.3, "#d9ddd2");
+          wash.addColorStop(0.55, "#e4e5df");
+          wash.addColorStop(1, "#e6e7e1");
+          p.fillStyle = wash;
+          p.fillRect(0, 0, mw, mh);
+
+          p.globalCompositeOperation = "destination-in";
+          const hFade = p.createLinearGradient(0, 0, mw, 0);
+          hFade.addColorStop(0, "rgba(0,0,0,0)");
+          hFade.addColorStop(0.03, "#000");
+          hFade.addColorStop(0.97, "#000");
+          hFade.addColorStop(1, "rgba(0,0,0,0)");
+          p.fillStyle = hFade;
+          p.fillRect(0, 0, mw, mh);
+
+          const vFade = p.createLinearGradient(0, 0, 0, mh);
+          vFade.addColorStop(0, "rgba(0,0,0,0)");
+          vFade.addColorStop(0.18, "#000");
+          vFade.addColorStop(0.82, "#000");
+          vFade.addColorStop(1, "rgba(0,0,0,0)");
+          p.fillStyle = vFade;
+          p.fillRect(0, 0, mw, mh);
+
+          ctx.drawImage(patch, W * 0.155, H * 0.119);
+
+          // Guest name, centered on the line — same box as .guest-name
+          const nw = W * 0.65;
+          const nh = H * 0.026;
+          let fontSize = Math.round(nh * 0.85);
+          ctx.fillStyle = "#434c1f";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          do {
+            ctx.font = `700 ${fontSize}px "Cormorant Garamond", serif`;
+            if ("letterSpacing" in ctx) {
+              ctx.letterSpacing = fontSize * 0.06 + "px";
+            }
+            if (ctx.measureText(name).width <= nw) break;
+            fontSize -= 2;
+          } while (fontSize > 20);
+
+          ctx.fillText(name, W * 0.175 + nw / 2, H * 0.1215 + nh / 2);
+          return canvas;
         }
       })();
     </script>
