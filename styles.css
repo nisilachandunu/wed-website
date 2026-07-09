@@ -2382,9 +2382,10 @@ body.intro-done .ampersand {
 .couple-section::before {
     content: 'N & Y';
     font-size: 16rem;
-    top: 2rem;
-    right: -2rem;
-    transform: rotate(-8deg);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    white-space: nowrap;
 }
 
 .timeline-section::after {
@@ -2797,7 +2798,7 @@ body.intro-done .ampersand {
 
 /* --- Watermarks scale down on smaller screens --- */
 @media (max-width: 768px) {
-    .couple-section::before { font-size: 9rem; right: -3rem; }
+    .couple-section::before { font-size: 9rem; }
     .timeline-section::after { font-size: 10rem; left: -4rem; }
     .gallery-section::before { font-size: 8rem; }
 
