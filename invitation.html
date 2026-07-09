@@ -281,21 +281,40 @@
         print-color-adjust: exact;
       }
 
-      /* Guest name overlay — positioned over the printed "MR / MRS / MISS ....." line */
+      /* Guest name overlay — covers the whole printed "MR / MRS / MISS ....." line */
       .guest-name-mask {
         position: absolute;
-        left: 40.2%;
-        top: 12.15%;
-        width: 42%;
-        height: 2.6%;
-        background: #d9ddd2;
+        left: 15.5%;
+        top: 11.9%;
+        width: 69%;
+        height: 3.1%;
+        /* Matches the card's watercolor wash: greener on the left, lighter on the right */
+        background: linear-gradient(
+          to right,
+          #d5d9cc 0%,
+          #d9ddd2 30%,
+          #e4e5df 55%,
+          #e6e7e1 100%
+        );
+        /* Fade the patch edges into the watercolor wash; the fade zones sit
+           over plain background, clear of the printed text */
+        -webkit-mask-image:
+          linear-gradient(to right, transparent, #000 3%, #000 97%, transparent),
+          linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+        -webkit-mask-composite: destination-in;
+        mask-image:
+          linear-gradient(to right, transparent, #000 3%, #000 97%, transparent),
+          linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+        mask-composite: intersect;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
       }
 
       .guest-name {
         position: absolute;
-        left: 40.2%;
+        left: 17.5%;
         top: 12.15%;
-        width: 42%;
+        width: 65%;
         height: 2.6%;
         display: flex;
         align-items: center;
@@ -451,8 +470,21 @@
 
     <script>
       (function () {
+        const STORAGE_KEY = "weddingGuestName";
         const params = new URLSearchParams(window.location.search);
-        const guest = (params.get("to") || "").trim();
+        let guest = (params.get("to") || "").trim();
+
+        // Remember the invited guest so the name survives navigating
+        // away and returning without the ?to= link
+        try {
+          if (guest) {
+            localStorage.setItem(STORAGE_KEY, guest);
+          } else {
+            guest = (localStorage.getItem(STORAGE_KEY) || "").trim();
+          }
+        } catch (e) {
+          /* storage unavailable (private mode) — fall back to URL only */
+        }
 
         if (guest) {
           const viewer = document.getElementById("invitationViewer");
