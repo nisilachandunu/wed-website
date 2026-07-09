@@ -485,10 +485,15 @@
           /* storage unavailable (private mode) — fall back to URL only */
         }
 
-        // "kasun perera" / "KASUN PERERA" -> "Kasun Perera"
+        // "kasun perera" / "KASUN PERERA" -> "Kasun Perera".
+        // Strip invisible characters that sneak in from copied links,
+        // then capitalize every run of letters so the first word is
+        // handled the same as the rest
         guest = guest
+          .replace(/[\u200B-\u200D\uFEFF]/g, "")
+          .trim()
           .toLowerCase()
-          .replace(/(^|[\s\-'])\p{L}/gu, (c) => c.toUpperCase());
+          .replace(/\p{L}+/gu, (w) => w.charAt(0).toUpperCase() + w.slice(1));
 
         if (guest) {
           const viewer = document.getElementById("invitationViewer");

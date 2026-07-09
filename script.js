@@ -298,20 +298,16 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         const name = document.getElementById('guestName').value;
-        const phone = document.getElementById('guestPhone').value;
         const attending = document.getElementById('attending').value;
-        const guests = document.getElementById('guests').value;
         const message = document.getElementById('message').value;
 
         // Build WhatsApp message
         const attendingText = attending === 'yes' ? 'Joyfully Accepts' : 'Regretfully Declines';
-        const whatsappMessage = 
+        const whatsappMessage =
             `*Wedding RSVP — Nisila & Yashmi*\n` +
             `━━━━━━━━━━━━━━━━━━\n` +
             `*Name:* ${name}\n` +
-            `*Phone:* ${phone}\n` +
             `*Attending:* ${attendingText}\n` +
-            `*Number of Guests:* ${guests}\n` +
             `${message ? `*Message:* ${message}\n` : ''}` +
             `━━━━━━━━━━━━━━━━━━\n` +
             `Sent from the Wedding Website`;
