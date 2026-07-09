@@ -138,24 +138,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
 
-    // Scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
     // Mobile toggle
     navToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
+        const isOpen = navLinks.classList.toggle('open');
+        document.documentElement.classList.toggle('menu-open', isOpen);
     });
 
     // Close on link click
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('open');
+            document.documentElement.classList.remove('menu-open');
         });
     });
 
@@ -163,12 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {
         if (!navbar.contains(e.target)) {
             navLinks.classList.remove('open');
+            document.documentElement.classList.remove('menu-open');
         }
     });
 
     // Active link highlighting
     const sections = document.querySelectorAll('section[id]');
-    
+
     function highlightNav() {
         const scrollY = window.scrollY + 200;
         sections.forEach(section => {
@@ -176,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
             const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
-            
+
             if (navLink) {
                 if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                     navLink.style.color = '';
@@ -188,7 +182,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    window.addEventListener('scroll', highlightNav);
+    // Combined, rAF-throttled scroll handler (navbar state + nav highlighting + parallax)
+    const heroEl = document.querySelector('.hero');
+
+    function onMainScroll() {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        highlightNav();
+
+        if (heroEl && window.scrollY < window.innerHeight) {
+            heroEl.style.backgroundPositionY = `${window.scrollY * 0.3}px`;
+        }
+    }
+
+    let mainScrollTicking = false;
+    window.addEventListener('scroll', () => {
+        if (!mainScrollTicking) {
+            requestAnimationFrame(() => {
+                onMainScroll();
+                mainScrollTicking = false;
+            });
+            mainScrollTicking = true;
+        }
+    }, { passive: true });
 
     // ============================================
     // SCROLL ANIMATIONS
@@ -337,17 +357,6 @@ document.addEventListener('DOMContentLoaded', () => {
             heroContent.style.transform = 'translateY(0)';
         }, 300);
     }
-
-    // ============================================
-    // PARALLAX SUBTLE EFFECT
-    // ============================================
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const hero = document.querySelector('.hero');
-        if (hero && scrolled < window.innerHeight) {
-            hero.style.backgroundPositionY = `${scrolled * 0.3}px`;
-        }
-    });
 
     // ============================================
     // TYPING EFFECT FOR HERO (Subtle)
