@@ -222,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (petalsContainer && !prefersReducedMotion) {
-        const petalEmojis = ['🌸', '✿', '❀'];
         let activePetals = 0;
 
         function isMobile() {
@@ -237,7 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const petal = document.createElement('div');
             petal.classList.add('petal');
             if (mobile) petal.classList.add('petal--mobile');
-            petal.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
 
             const startX = Math.random() * window.innerWidth;
             const duration = mobile ? 12 + Math.random() * 8 : 10 + Math.random() * 8;
@@ -286,24 +284,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const message = document.getElementById('message').value;
 
         // Build WhatsApp message
-        const attendingText = attending === 'yes' ? '✅ Joyfully Accepts' : '❌ Regretfully Declines';
+        const attendingText = attending === 'yes' ? 'Joyfully Accepts' : 'Regretfully Declines';
         const whatsappMessage = 
-            `💒 *Wedding RSVP — Nisila & Yashmi*\n` +
+            `*Wedding RSVP — Nisila & Yashmi*\n` +
             `━━━━━━━━━━━━━━━━━━\n` +
-            `👤 *Name:* ${name}\n` +
-            `📱 *Phone:* ${phone}\n` +
-            `📋 *Attending:* ${attendingText}\n` +
-            `👥 *Number of Guests:* ${guests}\n` +
-            `${message ? `💬 *Message:* ${message}\n` : ''}` +
+            `*Name:* ${name}\n` +
+            `*Phone:* ${phone}\n` +
+            `*Attending:* ${attendingText}\n` +
+            `*Number of Guests:* ${guests}\n` +
+            `${message ? `*Message:* ${message}\n` : ''}` +
             `━━━━━━━━━━━━━━━━━━\n` +
-            `Sent from the Wedding Website 💕`;
+            `Sent from the Wedding Website`;
 
         const whatsappURL = `https://wa.me/94701990692?text=${encodeURIComponent(whatsappMessage)}`;
 
         // Show toast
         showToast(attending === 'yes'
-            ? `Thank you, ${name}! Redirecting to WhatsApp... 🎉`
-            : `Thank you, ${name}. Redirecting to WhatsApp... 💕`
+            ? `Thank you, ${name}! Redirecting to WhatsApp...`
+            : `Thank you, ${name}. Redirecting to WhatsApp...`
         );
 
         // Reset form
@@ -387,18 +385,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // FOOTER — floating hearts
+    // FOOTER — floating hearts (CSS-drawn, not emoji)
     // ============================================
     const footerHearts = document.getElementById('footerHearts');
     if (footerHearts && !reducedMotion) {
-        const heartChars = ['❤', '♥', '❥'];
         const heartCount = window.innerWidth <= 768 ? 6 : 10;
         for (let i = 0; i < heartCount; i++) {
             const h = document.createElement('span');
             h.className = 'floating-heart';
-            h.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
             h.style.left = `${5 + Math.random() * 90}%`;
-            h.style.fontSize = `${0.6 + Math.random() * 0.9}rem`;
+            const size = 0.6 + Math.random() * 0.9;
+            h.style.width = `${size}rem`;
+            h.style.height = `${size}rem`;
             h.style.setProperty('--hfd', `${7 + Math.random() * 6}s`);
             h.style.setProperty('--hfdel', `${Math.random() * 8}s`);
             footerHearts.appendChild(h);

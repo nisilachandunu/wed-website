@@ -47,13 +47,13 @@ function buildInvitationLink(name) {
 
 function buildWhatsappMessage(name, link) {
     return (
-        `💒 *You're Invited!*\n\n` +
+        `*You're Invited!*\n\n` +
         `Dear ${name},\n\n` +
-        `We joyfully invite you to celebrate the wedding of *${WEDDING.couple}* 💕\n\n` +
-        `📅 *Date:* ${WEDDING.dateLine}\n` +
-        `📍 *Venue:* ${WEDDING.venueLine}\n\n` +
+        `We joyfully invite you to celebrate the wedding of *${WEDDING.couple}*.\n\n` +
+        `*Date:* ${WEDDING.dateLine}\n` +
+        `*Venue:* ${WEDDING.venueLine}\n\n` +
         `View your personal invitation here:\n${link}\n\n` +
-        `We can't wait to celebrate this special day with you! 🌸\n\n` +
+        `We look forward to celebrating this special day with you.\n\n` +
         `With love,\n${WEDDING.couple}`
     );
 }
@@ -187,7 +187,7 @@ function renderGuests(guests) {
         const sendBtn = document.createElement('button');
         sendBtn.className = 'btn btn-sm btn-whatsapp';
         sendBtn.type = 'button';
-        sendBtn.textContent = '📲 Send via WhatsApp';
+        sendBtn.textContent = 'Send via WhatsApp';
         sendBtn.addEventListener('click', () => sendInvitation(guest));
 
         const copyBtn = document.createElement('button');
@@ -226,7 +226,7 @@ addGuestForm.addEventListener('submit', async (e) => {
         });
         addGuestForm.reset();
         guestNameInput.focus();
-        showToast(`Added ${name} to the guest list ✨`);
+        showToast(`Added ${name} to the guest list`);
     } catch (err) {
         console.error('Failed to add guest:', err);
         showToast('Could not add guest. Check console for details.');
@@ -264,7 +264,7 @@ async function copyInvitationLink(guest) {
     const link = buildInvitationLink(guest.name);
     try {
         await navigator.clipboard.writeText(link);
-        showToast('Invitation link copied to clipboard 📋');
+        showToast('Invitation link copied to clipboard');
     } catch (err) {
         window.prompt('Copy this link:', link);
     }

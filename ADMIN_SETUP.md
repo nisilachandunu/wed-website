@@ -75,7 +75,7 @@ Firebase console before the admin page will work. It takes about 10 minutes.
 2. Visit `https://<your-site>/admin.html`, sign in with the email/password from step 2.
 3. Add a guest (name + phone number, e.g. `0771234567` — Sri Lankan numbers without
    the leading `0` or with a `+94` prefix are also handled automatically).
-4. Click **📲 Send via WhatsApp** — this opens WhatsApp Web/App with a pre-filled
+4. Click **Send via WhatsApp** — this opens WhatsApp Web/App with a pre-filled
    message (wedding details + their personal invitation link) addressed to that
    guest's number. Review it and hit **Send** yourself (there's no way to send
    WhatsApp messages fully automatically without the paid, business-verified
