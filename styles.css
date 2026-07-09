@@ -861,7 +861,10 @@ html.menu-open {
 
 .timeline-dot {
     position: absolute;
-    left: -2.65rem;
+    /* Centers the dot on the rail (rail center 13px, half-dot 8px)
+       relative to the .timeline padding-left, which is in rem and
+       shrinks with the root font size on mobile */
+    left: calc(5px - 3rem);
     top: 0.5rem;
     width: 16px;
     height: 16px;
@@ -1543,7 +1546,8 @@ html.menu-open {
     }
 
     .timeline-dot {
-        left: -1.7rem;
+        /* rail center 13px - 7px half-dot - 2rem padding */
+        left: calc(6px - 2rem);
         width: 14px;
         height: 14px;
     }
@@ -1750,7 +1754,8 @@ html.menu-open {
     }
 
     .timeline-dot {
-        left: -1.4rem;
+        /* rail center 13px - 6px half-dot - 1.5rem padding */
+        left: calc(7px - 1.5rem);
         width: 12px;
         height: 12px;
     }
