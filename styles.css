@@ -1140,6 +1140,26 @@ html.menu-open {
   font-style: italic;
 }
 
+.rsvp-message + .rsvp-deadline {
+  margin-top: -1.8rem;
+}
+
+.rsvp-deadline {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+
+.rsvp-deadline strong {
+  color: var(--color-gold-light);
+  font-weight: 700;
+  font-style: normal;
+}
+
 .rsvp-form {
   display: flex;
   flex-direction: column;
