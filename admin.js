@@ -168,9 +168,12 @@ function renderGuests(guests) {
         nameTd.className = 'guest-name-cell';
         nameTd.setAttribute('data-label', 'Name');
         nameTd.textContent = guest.name;
+        nameTd.title = guest.name;
 
         const phoneTd = document.createElement('td');
+        phoneTd.className = 'guest-phone-cell';
         phoneTd.setAttribute('data-label', 'Phone');
+        phoneTd.title = guest.phone;
         phoneTd.textContent = guest.phone;
 
         const statusTd = document.createElement('td');

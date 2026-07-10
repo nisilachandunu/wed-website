@@ -224,7 +224,13 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed;
         }
+
+        thead th:nth-child(1) { width: 28%; }
+        thead th:nth-child(2) { width: 20%; }
+        thead th:nth-child(3) { width: 14%; }
+        thead th:nth-child(4) { width: 38%; }
 
         thead th {
             text-align: left;
@@ -249,6 +255,13 @@
 
         .guest-name-cell {
             font-weight: 600;
+        }
+
+        .guest-name-cell,
+        .guest-phone-cell {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .badge {
@@ -324,6 +337,13 @@
                 justify-content: space-between;
                 align-items: center;
                 gap: 1rem;
+            }
+
+            .guest-name-cell,
+            .guest-phone-cell {
+                white-space: normal;
+                overflow: visible;
+                overflow-wrap: anywhere;
             }
 
             tbody td::before {
