@@ -435,7 +435,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow: hidden;
+        overflow: visible;
       }
 
       .guest-name span {
@@ -640,7 +640,7 @@
 
           // Auto-shrink long names so they stay on one line within the placeholder
           const maxWidth = nameEl.clientWidth;
-          let fontSize = 22;
+          let fontSize = 25;
           textEl.style.fontSize = fontSize + "px";
           while (textEl.scrollWidth > maxWidth && fontSize > 6) {
             fontSize -= 1;
@@ -737,7 +737,7 @@
           // Guest name, centered on the line — same box as .guest-name
           const nw = W * 0.65;
           const nh = H * 0.026;
-          let fontSize = Math.round(nh * 0.85);
+          let fontSize = Math.round(nh * 1.0);
           ctx.fillStyle = "#434c1f";
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
