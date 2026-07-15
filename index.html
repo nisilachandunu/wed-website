@@ -68,6 +68,14 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+      <div class="hero-photo" aria-hidden="true">
+        <img
+          src="assets/photos/hero.jpg"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
       <div class="hero-aurora" aria-hidden="true">
         <span class="aurora-blob aurora-1"></span>
         <span class="aurora-blob aurora-2"></span>
@@ -391,45 +399,91 @@
 
       <div class="gallery-grid">
         <div class="gallery-item gi-1" data-animate>
-          <div class="gallery-placeholder">
-            <span>01</span>
-            <p>Photo 1</p>
-          </div>
+          <figure class="gallery-photo">
+            <img
+              src="assets/photos/gallery-2.jpg"
+              alt="Nisila and Yashmi embracing with a bouquet of flowers"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="caption-line"></span>
+              <p>Every Heartbeat, Yours</p>
+            </figcaption>
+          </figure>
         </div>
         <div class="gallery-item gi-2" data-animate>
-          <div class="gallery-placeholder">
-            <span>02</span>
-            <p>Photo 2</p>
-          </div>
+          <figure class="gallery-photo">
+            <img
+              src="assets/photos/gallery-3.jpg"
+              alt="Nisila twirling Yashmi in a sunlit garden path"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="caption-line"></span>
+              <p>Dancing in Golden Light</p>
+            </figcaption>
+          </figure>
         </div>
         <div class="gallery-item gi-3" data-animate>
-          <div class="gallery-placeholder">
-            <span>03</span>
-            <p>Photo 3</p>
-          </div>
+          <figure class="gallery-photo">
+            <img
+              src="assets/photos/gallery-6.jpg"
+              alt="Nisila lifting Yashmi joyfully by the ocean waves"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="caption-line"></span>
+              <p>Where the Ocean Sings</p>
+            </figcaption>
+          </figure>
         </div>
         <div class="gallery-item gi-4" data-animate>
-          <div class="gallery-placeholder">
-            <span>04</span>
-            <p>Photo 4</p>
-          </div>
+          <figure class="gallery-photo">
+            <img
+              src="assets/photos/gallery-5.jpg"
+              alt="The couple sitting hand in hand beside an antique door"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="caption-line"></span>
+              <p>Quiet Conversations</p>
+            </figcaption>
+          </figure>
         </div>
         <div class="gallery-item gi-5" data-animate>
-          <div class="gallery-placeholder">
-            <span>05</span>
-            <p>Photo 5</p>
-          </div>
+          <figure class="gallery-photo">
+            <img
+              src="assets/photos/gallery-1.jpg"
+              alt="The couple standing together against a wall of ivy"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="caption-line"></span>
+              <p>Amongst the Ivy</p>
+            </figcaption>
+          </figure>
         </div>
         <div class="gallery-item gi-6" data-animate>
-          <div class="gallery-placeholder">
-            <span>06</span>
-            <p>Photo 6</p>
-          </div>
+          <figure class="gallery-photo">
+            <img
+              src="assets/photos/gallery-4.jpg"
+              alt="A reflective moment together in a candlelit interior"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="caption-line"></span>
+              <p>Reflections of Us</p>
+            </figcaption>
+          </figure>
         </div>
       </div>
-      <p class="gallery-note">
-        Photos will be updated as the big day approaches.
-      </p>
+      <p class="gallery-note">More moments coming after the big day.</p>
     </section>
 
     <!-- RSVP Section -->
@@ -521,6 +575,38 @@
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
       <span class="btt-arrow">↑</span>
     </button>
+
+    <!-- Gallery Lightbox -->
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Photo viewer"
+    >
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+        &times;
+      </button>
+      <button
+        class="lightbox-arrow lightbox-prev"
+        id="lightboxPrev"
+        aria-label="Previous photo"
+      >
+        &#10094;
+      </button>
+      <figure class="lightbox-figure">
+        <img id="lightboxImage" src="" alt="" />
+        <figcaption id="lightboxCaption"></figcaption>
+        <p class="lightbox-counter" id="lightboxCounter"></p>
+      </figure>
+      <button
+        class="lightbox-arrow lightbox-next"
+        id="lightboxNext"
+        aria-label="Next photo"
+      >
+        &#10095;
+      </button>
+    </div>
 
     <!-- Toast notification -->
     <div class="toast" id="toast">

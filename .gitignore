@@ -1,3 +1,6 @@
 .DS_Store
 .vercel
 node_modules/
+
+# Full-resolution photo originals (web versions live in assets/photos/)
+selected/
