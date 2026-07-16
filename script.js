@@ -314,6 +314,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const rsvpForm = document.getElementById("rsvpForm");
   const toast = document.getElementById("toast");
 
+  // Pre-fill the guest's name if we know it from the invitation link,
+  // so they just need to pick "attending" and submit
+  try {
+    const savedGuestName = (
+      localStorage.getItem("weddingGuestName") || ""
+    ).trim();
+    if (savedGuestName) {
+      document.getElementById("guestName").value = savedGuestName;
+    }
+  } catch (e) {
+    /* storage unavailable (private mode) — leave the field blank */
+  }
+
   rsvpForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
