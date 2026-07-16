@@ -53,7 +53,8 @@ function buildWhatsappMessage(name, link) {
         `*Date:* ${WEDDING.dateLine}\n` +
         `*Venue:* ${WEDDING.venueLine}\n\n` +
         `View your personal invitation here:\n${link}\n\n` +
-        `Your presence means a lot. Kindly RSVP on or before *6th August 2026*.\n\n` +
+        `Your presence means a lot. Kindly RSVP on or before *6th August 2026*. ` +
+        `You can RSVP right on the website — just tap *"Back to Website"* on the invitation page.\n\n` +
         `We look forward to celebrating this special day with you.\n\n` +
         `With love,\n${WEDDING.couple}`
     );
