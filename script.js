@@ -358,10 +358,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Reset form
     rsvpForm.reset();
 
-    // Open WhatsApp after a short delay so the user sees the toast
-    setTimeout(() => {
-      window.open(whatsappURL, "_blank");
-    }, 1500);
+    // Open WhatsApp synchronously within the click gesture — Safari/iOS
+    // blocks window.open when it's delayed (e.g. inside setTimeout)
+    const whatsappWindow = window.open(whatsappURL, "_blank");
+    if (!whatsappWindow) {
+      // Popup blocked (common on iOS) — navigate the current page instead,
+      // after a short delay so the user still sees the toast
+      setTimeout(() => {
+        window.location.href = whatsappURL;
+      }, 1200);
+    }
   });
 
   function showToast(msg) {
